@@ -1,8 +1,8 @@
-require("./dbSetup.js")();
+require("../dbSetup.js")();
 
-var User = require("./models/User.js");
-var LocationBlog = require("./models/LocationBlog.js");
-var Position = require("./models/Position.js");
+var User = require("../models/User.js");
+var LocationBlog = require("../models/LocationBlog.js");
+var Position = require("../models/Position.js");
 
 //Utility Function to create users
 function userCreate(firstName, lastName, userName, password, email, type, company, companyUrl) {
@@ -41,6 +41,7 @@ async function createUsers() {
     userCreate("Iris", "Wonnegut", "iw", "test", "a@b.dk", "A type", "comp", "comp.url"),
   ]
   var users = await Promise.all(userPromises);
+  
   var positionPromises = [
     positionCreator(10, 11, users[0]._id),
     positionCreator(11, 12, users[1]._id, true),
@@ -68,4 +69,4 @@ async function createUsers() {
   console.log("Likes for a Cool Place", blogs[0].likedByCount);
 }
 
-createUsers();
+module.exports = createUsers;

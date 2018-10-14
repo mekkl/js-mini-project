@@ -6,13 +6,13 @@ function getAllUsers() {
 }
 
 function addUser(firstName, lastName, userName, password, email) {
-  //TBD -- Should make the test fail
-  return null;
+  var userDetails = { firstName, lastName, userName, password, email};
+  var user = new User(userDetails);
+  return user.save();
 }
 
 function findByUsername(username) {
-  //TBD -- Should make the test fail
-  return null;
+  return User.findOne({userName: username}).exec()
 }
 
 function findById(id) {

@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 require('./dbSetup')();
 
-var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api')
+var indexRouter = require('./routes/index')
+var apiRouter = require('./routes/api/apiRouter')
 
 var app = express();
 

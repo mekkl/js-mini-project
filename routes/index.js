@@ -8,11 +8,9 @@ var blogFacade = require('../facades/blogFacade');
 router.get('/', function(req, res, next) {
   userFacade.getAllUsers().then((err, json) => {
     
-    console.log('yo')
   }).catch(err => {
     console.log(err)
   })
-  console.log('to')
   res.render('index', { title: 'Mini Project' });
 });
 

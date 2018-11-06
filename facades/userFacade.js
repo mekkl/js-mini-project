@@ -2,13 +2,16 @@ var mongoose = require("mongoose");
 var User = require("../models/User");
 var debug = require('debug')('miniproject:userFacade');
 
+
 function getAllUsers() {
   return User.find({}).exec();
 }
 
-function addUser(firstName, lastName, userName, password, email) {
-  var userDetails = { firstName, lastName, userName, password, email};
+async function addUser(firstName, lastName, userName, password, email) {
+  
+  const userDetails = { firstName, lastName, userName, password, email};
   var user = new User(userDetails);
+
   return user.save();
 }
 

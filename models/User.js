@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+const bcrypt = require('bcrypt')
 
 //Use as an example for embedding
 var JobSchema = new Schema({
@@ -20,8 +21,9 @@ var UserSchema = new Schema({
   lastUpdated : Date
 })
 
-UserSchema.pre("save",function(next){
-  this.password = "hash_me_and_add_some_salt "+this.password;
+UserSchema.pre("save", async function(next) {
+  const saltRounds = 10
+  this.password = await bcrypt.hash(this.password, saltRounds)
   this.lastUpdated = new Date();
   next();
 })

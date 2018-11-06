@@ -16,7 +16,9 @@ var User = require("../../models/User");
 let connection = null;
 describe("Testing the LocationBlog Facade", function () {
 
-  /* Connect to the TEST-DATABASE */
+  /**
+   *Connect to the TEST-DATABASE 
+   */
   before(async function () {
     this.timeout(settings.MOCHA_TEST_TIMEOUT);
     await dbSetup(settings.TEST_DB_URI);
@@ -26,9 +28,12 @@ describe("Testing the LocationBlog Facade", function () {
     mongoose.connection.close();
   })
   
+
   var users = [];
   var blogs = [];
-  /* Setup the database in a known state (2 locBlogs + 2 users) before EACH test */
+  /**
+   *  Setup the database in a known state (2 locBlogs + 2 users) before EACH test 
+   */
   beforeEach(async function () {
     await User.deleteMany({}).exec();
     users = await Promise.all([
@@ -43,12 +48,12 @@ describe("Testing the LocationBlog Facade", function () {
     ])
   })
 
-  it("Should find all location blogs ('Crazy place' and 'Another crazy place')", async function () {
+  it("getAllBlogs: Should find all location blogs ('Crazy place' and 'Another crazy place')", async function () {
     var blogs = await locationBlogFacade.getAllBlogs();
     expect(blogs.length).to.be.equal(2);
   });
 
-  it("Should add the given userId to the liked list", async function () {
+  it("getAllBlogs: Should add the given userId to the liked list", async function () {
     var blogs = await locationBlogFacade.getAllBlogs();
     var users = await userFacade.getAllUsers();
     

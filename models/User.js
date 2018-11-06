@@ -28,7 +28,7 @@ UserSchema.pre("save", async function(next) {
   next();
 })
 
-UserSchema.pre("update",function(next){
+UserSchema.pre("update", function(next) {
   this.update({},{$set : {lastUpdated: new Date()}});
   next();
 })

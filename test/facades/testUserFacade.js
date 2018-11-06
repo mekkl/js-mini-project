@@ -37,22 +37,22 @@ describe("Testing the User Facade", function () {
     ])
   })
 
-  it("Should find all users (Kurt and Hanne)", async function () {
+  it("getAllUsers: Should find all users (Kurt and Hanne)", async function () {
     var users = await userFacade.getAllUsers();
     expect(users.length).to.be.equal(2);
   });
 
-  it("Should Find Kurt Wonnegut by Username", async function () {
+  it("findByUsername: Should Find Kurt Wonnegut by Username", async function () {
     var user = await userFacade.findByUsername("kw");
     expect(user.firstName).to.be.equal("Kurt");
   });
 
-  it("Should Find Kurt Wonnegut by ID", async function () {
+  it("findById: Should Find Kurt Wonnegut by ID", async function () {
     var user = await userFacade.findById(users[0]._id);
     expect(user.firstName).to.be.equal("Kurt");
   });
 
-  it("Should add Peter Pan", async function () {
+  it("addUser: Should add Peter Pan", async function () {
     var user = await userFacade.addUser("Peter", "Pan", "peter", "test", "a@b.dk");
     expect(user).to.not.be.null;
     expect(user.firstName).to.be.equal("Peter");

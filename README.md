@@ -4,6 +4,18 @@
 
 [mLab (DB)](https://mlab.com/home)
 
+## Usage
+Download afhængiheder:
+```
+$ yarn
+```
+eller,
+```
+$ npm install
+```
+
+Herefter kan benyttes følgende scripts (se `package.json` for mere info). `start`, `dev-mac`, `dev-win`, `text-mac`, `test-win`
+
 ## Mini Project
 To make the technologies we are going to cover throughout the semester a bit more interesting, many of the coming exercises will be focused on a common project idea, as outlined below:
 
@@ -26,3 +38,9 @@ A simple friend-finder app, where you can log-in, via a phone, provide a radius 
 
 ## Part-3: 
 Will introduce features from 1+2, but this time using Graph-QL, in order to demonstrate the advantages of this new technology
+
+## Issues
+### Mocha hangs - 06/11/2018
+Mocha hænger efter end testing. Ifølge [boneskull](https://boneskull.com/mocha-v4-nears-release/#mochawontforceexit) som skriver følgende "If the `mocha` process is still alive after your tests seem "done", then your tests have scheduled something to happen (asynchronously) and haven't cleaned up after themselves properly. Did you leave a socket open?".
+
+Problemet kan løses ved et quick-fix hvis man benytter `--exit`. Dette skal løses bedre i fremtiden!

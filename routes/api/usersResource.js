@@ -1,17 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var userFacade = require('../../facades/userFacade');
-var blogFacade = require('../../facades/blogFacade');
+var debug = require('debug')('miniproject:usersResource');
+
 
 router.route('/')
-// get all the users (accessed at GET http://localhost:8080/api/users)
+// GET: get all the users (accessed at GET http://localhost:PORT/api/users)
 .get(async function(req, res) {
     let users = await userFacade.getAllUsers()
     res.json(users)
 })
-// post new user (accessed at POST http://localhost:8080/api/users)
+// POST: add new user (accessed at POST http://localhost:PORT/api/users)
 .post(async function(req, res) {
     try {
+        debug(req.body)
         let firstName = req.body.firstName
         let lastName = req.body.lastName
         let userName = req.body.userName

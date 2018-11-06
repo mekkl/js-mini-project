@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev-mac": "DEBUG=miniproject:* nodemon ./bin/www",
-    "dev-win": "SET DEBUG=miniproject:* nodemon ./bin/www",
-    "test-mac": "DEBUG=miniproject:* & mocha",
-    "test-win": "SET DEBUG=miniproject:* & mocha"
+    "dev-mac": "DEBUG=miniproject:* & nodemon ./bin/www",
+    "dev-win": "SET DEBUG=miniproject:* & nodemon ./bin/www",
+    "test-mac": "DEBUG=miniproject:* & mocha --recursive --exit",
+    "test-win": "SET DEBUG=miniproject:* & mocha --recursive --exit"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

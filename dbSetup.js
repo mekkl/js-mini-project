@@ -3,9 +3,8 @@ const dbURI = require("./settings").DEV_DB_URI;
 var debug = require('debug')('miniproject:dbsetup');
 
 
-
 function connect(dbUriString){
-    debug(`connecting to ${dbURI}...`);
+    debug(`connecting to ${dbURI}`);
     const conStr = dbUriString ? dbUriString : dbURI;
     // This returns a promise
     return mongoose.connect(conStr,{ useNewUrlParser: true, useCreateIndex: true }); 

@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-var User = require("../models/user");
+var User = require("../models/User");
+var debug = require('debug')('miniproject:userFacade');
 
 function getAllUsers() {
   return User.find({}).exec();
@@ -12,6 +13,7 @@ function addUser(firstName, lastName, userName, password, email) {
 }
 
 function findByUsername(username) {
+  debug(username)
   return User.findOne({userName: username}).exec()
 }
 

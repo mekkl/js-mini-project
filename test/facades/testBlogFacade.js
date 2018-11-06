@@ -1,24 +1,25 @@
 const mongoose = require("mongoose");
 const expect = require("chai").expect;
-const dbSetup = require("..//dbSetup");
+const dbSetup = require("../../dbSetup");
+const settings = require("../../settings")
 
 //https://github.com/Automattic/mongoose/issues/1251
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-var locationBlogFacade = require("../facades/blogFacade");
-var LocationBlog = require("../models/LocationBlog");
-var userFacade = require("../facades/userFacade");
-var User = require("../models/user");
+var locationBlogFacade = require("../../facades/blogFacade");
+var LocationBlog = require("../../models/LocationBlog");
+var userFacade = require("../../facades/userFacade");
+var User = require("../../models/User");
 
 let connection = null;
 describe("Testing the LocationBlog Facade", function () {
 
   /* Connect to the TEST-DATABASE */
   before(async function () {
-    this.timeout(require("../settings").MOCHA_TEST_TIMEOUT);
-    await dbSetup(require("../settings").TEST_DB_URI);
+    this.timeout(settings.MOCHA_TEST_TIMEOUT);
+    await dbSetup(settings.TEST_DB_URI);
   })
 
   after(function () {

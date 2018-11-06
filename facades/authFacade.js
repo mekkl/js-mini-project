@@ -1,16 +1,18 @@
 var mongoose = require("mongoose");
 var User = require("../models/User");
 var Position = require("../models/Position")
+const userFacade = require('./userFacade')
 var debug = require('debug')('miniproject:authFacade');
+const bcrypt = require('bcrypt')
 
-function login(username, password, longitude, latitude, distance) {
+async function login(username, password) {
     try {
-        debug(username, password, longitude, latitude, distance)
-
-        
-        return User.findOne({userName: username}).exec()
+        const user = await userFacade.findByUsername(username)
+        const verified = (user && await bcrypt.compare(password, user.password))
+        if (verified) return user
+        else throw {msg: 'failed to authenticate from given username and/or password'}
     } catch(err) {
-
+        throw err
     }
 }
 

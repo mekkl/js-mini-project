@@ -25,6 +25,11 @@ router.route('/')
     }
 });
 
-
+router.route('/blogs')
+// get all the blogs (accessed at GET http://localhost:8080/api/blogs)
+.get(async function(req, res) {
+    let blogs = await blogFacade.getAllBlogs()
+    res.json(blogs)
+});
 
 module.exports = router;

@@ -12,6 +12,8 @@ router.route('/login')
         const latitude = req.params.latitude
         const longitude = req.params.longitude
         let user = await userFacade.findByUsername(userName)
+        
+        
         res.json(user)
     } catch (err) {
         res.status(500)

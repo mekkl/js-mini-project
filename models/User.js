@@ -1,15 +1,15 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt')
 
 //Use as an example for embedding
-var JobSchema = new Schema({
+const JobSchema = new Schema({
   type: String,
   company: String,
   companyUrl : String
 });
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   userName: {type: String, unique: true, required: true},
   firstName : String,
   lastName : String,

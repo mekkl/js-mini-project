@@ -3,18 +3,16 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 
-
 //https://github.com/Automattic/mongoose/issues/1251
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-var userFacade = require("../../facades/userFacade");
-var User = require("../../models/User");
-
+const userFacade = require("../../facades/userFacade");
+const User = require("../../models/User");
 let connection = null;
-describe("Testing the User Facade", function () {
 
+describe("Testing the User Facade", function () {
   /**
    * Connect to the TEST-DATABASE
    */ 
@@ -27,8 +25,10 @@ describe("Testing the User Facade", function () {
     mongoose.connection.close();
   })
   
-  var users = [];
-  /* Setup the database in a known state (2 users) before EACH test */
+  let users = [];
+  /**
+   * Setup the database in a known state (2 users) before EACH test
+   */
   beforeEach(async function () {
     await User.deleteMany({}).exec();
     users = await Promise.all([
@@ -38,25 +38,25 @@ describe("Testing the User Facade", function () {
   })
 
   it("getAllUsers: Should find all users (Kurt and Hanne)", async function () {
-    var users = await userFacade.getAllUsers();
+    const users = await userFacade.getAllUsers();
     expect(users.length).to.be.equal(2);
   });
 
   it("findByUsername: Should Find Kurt Wonnegut by Username", async function () {
-    var user = await userFacade.findByUsername("kw");
+    const user = await userFacade.findByUsername("kw");
     expect(user.firstName).to.be.equal("Kurt");
   });
 
   it("findById: Should Find Kurt Wonnegut by ID", async function () {
-    var user = await userFacade.findById(users[0]._id);
+    const user = await userFacade.findById(users[0]._id);
     expect(user.firstName).to.be.equal("Kurt");
   });
 
   it("addUser: Should add Peter Pan", async function () {
-    var user = await userFacade.addUser("Peter", "Pan", "peter", "test", "a@b.dk");
+    const user = await userFacade.addUser("Peter", "Pan", "peter", "test", "a@b.dk");
     expect(user).to.not.be.null;
     expect(user.firstName).to.be.equal("Peter");
-    var users = await userFacade.getAllUsers();
+    const users = await userFacade.getAllUsers();
     expect(users.length).to.be.equal(3);
   });
 

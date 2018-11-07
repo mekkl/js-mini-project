@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var User = require("../models/User");
-var Position = require("../models/Position")
+const mongoose = require("mongoose");
+const User = require("../models/User");
+const Position = require("../models/Position")
 const userFacade = require('./userFacade')
-var debug = require('debug')('miniproject:authFacade');
+const debug = require('debug')('miniproject:authFacade');
 const bcrypt = require('bcrypt')
 
 async function login(username, password) {

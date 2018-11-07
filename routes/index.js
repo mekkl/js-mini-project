@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var userFacade = require('../facades/userFacade');
-var blogFacade = require('../facades/blogFacade');
+const express = require('express');
+const router = express.Router();
+const userFacade = require('../facades/userFacade');
 
 
-/* GET home page. */
+/**
+ *  GET home page. 
+ */
 router.get('/', function(req, res, next) {
   userFacade.getAllUsers().then((err, json) => {
     

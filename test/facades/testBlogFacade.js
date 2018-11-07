@@ -3,21 +3,23 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 
-//https://github.com/Automattic/mongoose/issues/1251
+/**
+ *  https://github.com/Automattic/mongoose/issues/1251
+ */
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-var locationBlogFacade = require("../../facades/blogFacade");
-var LocationBlog = require("../../models/LocationBlog");
-var userFacade = require("../../facades/userFacade");
-var User = require("../../models/User");
+const locationBlogFacade = require("../../facades/blogFacade");
+const LocationBlog = require("../../models/LocationBlog");
+const userFacade = require("../../facades/userFacade");
+const User = require("../../models/User");
 
 let connection = null;
 describe("Testing the LocationBlog Facade", function () {
 
   /**
-   *Connect to the TEST-DATABASE 
+   *  Connect to the TEST-DATABASE 
    */
   before(async function () {
     this.timeout(settings.MOCHA_TEST_TIMEOUT);
@@ -29,8 +31,8 @@ describe("Testing the LocationBlog Facade", function () {
   })
   
 
-  var users = [];
-  var blogs = [];
+  let users = [];
+  let blogs = [];
   /**
    *  Setup the database in a known state (2 locBlogs + 2 users) before EACH test 
    */
@@ -49,15 +51,14 @@ describe("Testing the LocationBlog Facade", function () {
   })
 
   it("getAllBlogs: Should find all location blogs ('Crazy place' and 'Another crazy place')", async function () {
-    var blogs = await locationBlogFacade.getAllBlogs();
+    const blogs = await locationBlogFacade.getAllBlogs();
     expect(blogs.length).to.be.equal(2);
   });
 
   it("getAllBlogs: Should add the given userId to the liked list", async function () {
-    var blogs = await locationBlogFacade.getAllBlogs();
-    var users = await userFacade.getAllUsers();
-    
-    var blog = await locationBlogFacade.likeLocationBlog(blogs[0]._id, users[1]._id)
+    const blogs = await locationBlogFacade.getAllBlogs();
+    const users = await userFacade.getAllUsers();
+    const blog = await locationBlogFacade.likeLocationBlog(blogs[0]._id, users[1]._id)
     
     expect(blog.likedBy.length).to.be.equal(1);
   });

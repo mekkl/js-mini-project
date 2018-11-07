@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var locationBlogSchema = new Schema({
+const locationBlogSchema = new Schema({
   info: {type: String, required: true},
   pos : {
     longitude: {type: Number, required: true},

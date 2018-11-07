@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-var User = require("../models/User");
-var debug = require('debug')('miniproject:userFacade');
+const mongoose = require("mongoose");
+const User = require("../models/User");
+const debug = require('debug')('miniproject:userFacade');
 
 
 function getAllUsers() {
@@ -8,9 +8,8 @@ function getAllUsers() {
 }
 
 async function addUser(firstName, lastName, userName, password, email) {
-  
   const userDetails = { firstName, lastName, userName, password, email};
-  var user = new User(userDetails);
+  const user = new User(userDetails);
 
   return user.save();
 }

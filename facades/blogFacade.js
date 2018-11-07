@@ -1,13 +1,13 @@
-var mongoose = require("mongoose");
-var LocationBlog = require("../models/LocationBlog");
+const mongoose = require("mongoose");
+const LocationBlog = require("../models/LocationBlog");
 
 function getAllBlogs() {
     return LocationBlog.find({}).exec();
 }
 
 function addLocationBlog(info, author, longitude, latitude) {
-    var LocationBlogDetail = { info, pos: { longitude, latitude }, author };
-    var blog = new Blog(LocationBlogDetail);
+    const LocationBlogDetail = { info, pos: { longitude, latitude }, author };
+    const blog = new Blog(LocationBlogDetail);
     return blog.save();
 }
 

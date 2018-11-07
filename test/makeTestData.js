@@ -1,30 +1,30 @@
 require("../dbSetup.js")();
 
-var User = require("../models/User.js");
-var LocationBlog = require("../models/LocationBlog.js");
-var Position = require("../models/Position.js");
+const User = require("../models/User.js");
+const LocationBlog = require("../models/LocationBlog.js");
+const Position = require("../models/Position.js");
 
 //Utility Function to create users
 function userCreate(firstName, lastName, userName, password, email, type, company, companyUrl) {
-    var job = [{ type, company, companyUrl }, { type, company, companyUrl }];
-    var userDetail = { firstName, lastName, userName, email, password, job };
-    var user = new User(userDetail);
+    const job = [{ type, company, companyUrl }, { type, company, companyUrl }];
+    const userDetail = { firstName, lastName, userName, email, password, job };
+    const user = new User(userDetail);
     return user.save();
 }
 
 //Utility Function to create Positions
 function positionCreator(lon, lat, userId, dateInFuture) {
-    var posDetail = { user: userId, loc: { coordinates: [lon, lat] } }
+    const posDetail = { user: userId, loc: { coordinates: [lon, lat] } }
     if (dateInFuture) {
       posDetail.created = "2022-09-25T20:40:21.899Z"
     }
-    var pos = new Position(posDetail);
+    const pos = new Position(posDetail);
     return pos.save();
 }
 //Utility Function to create LocationBlogs
 function locationBlogCreator(info, author, longitude, latitude) {
-  var LocationBlogDetail = { info, pos: { longitude, latitude }, author };
-  var blog = new LocationBlog(LocationBlogDetail);
+  const LocationBlogDetail = { info, pos: { longitude, latitude }, author };
+  const blog = new LocationBlog(LocationBlogDetail);
   return blog.save();
 }
 // Here we will setup users
@@ -40,23 +40,23 @@ async function createUsers() {
     userCreate("Janne", "Wonnegut", "jw", "test", "a@b.dk", "A type", "comp", "comp.url"),
     userCreate("Iris", "Wonnegut", "iw", "test", "a@b.dk", "A type", "comp", "comp.url"),
   ]
-  var users = await Promise.all(userPromises);
+  const users = await Promise.all(userPromises);
   
-  var positionPromises = [
+  const positionPromises = [
     positionCreator(10, 11, users[0]._id),
     positionCreator(11, 12, users[1]._id, true),
     positionCreator(11, 13, users[2]._id, true)
   ]
-  var positions = await Promise.all(positionPromises);
+  const positions = await Promise.all(positionPromises);
 
   try {
-    var blogPromises = [
+    const blogPromises = [
       locationBlogCreator("Cool Place", users[0]._id, 26, 28),
       locationBlogCreator("Another Cool Place", users[0]._id, 56, 56),
       locationBlogCreator("Yet Another Cool Place", users[0]._id, 28, 56),
       locationBlogCreator("The coolest Place", users[3]._id, 34, 56),
     ];
-    var blogs = await Promise.all(blogPromises);
+    const blogs = await Promise.all(blogPromises);
   } catch (err) {
     console.log("UPPPS: ", err);
   }

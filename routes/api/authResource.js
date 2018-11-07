@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var debug = require('debug')('miniproject:authResource');
-var userFacade = require('../../facades/userFacade');
+const express = require('express');
+const router = express.Router();
+const debug = require('debug')('miniproject:authResource');
+const userFacade = require('../../facades/userFacade');
 
 router.route('/login')
 // post login params (accessed at POST http://localhost:PORT/api/auth/login)

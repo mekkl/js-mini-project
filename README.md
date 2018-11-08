@@ -26,9 +26,8 @@ Authenticated Users, can create LocationBlog-entries as sketched in the figure a
 
 The model is deliberately held very simple, and miss many parts necessary for a “real” system. The model is also meant ONLY  as initial thoughts, which should be used as inspiration during the Schema Design.
 
-## Architecture (what it is you have to build)
-This diagram illustrates what you are expected to 
-build throughout the semester. This is not a single system, but rather three small demo systems with a lot of redundancy meant to try out different technologies. Having a common database + facade for all projects makes it easier to get time for all of it.
+## Architecture
+This is not a single system, but rather three small demo systems with a lot of redundancy meant to try out different technologies. Having a common database + facade for all projects makes it easier to get time for all of it.
 
 ## Part-1: 
 The first part represents a traditional web application, built with server-side rendering (pug, ejs or handlebars) and a MongoDB/mongoose database. Via this app, you should be able to log-in, create blog entries, and ideally also watch and like these entries.

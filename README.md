@@ -49,3 +49,7 @@ Problemet kan løses ved et quick-fix hvis man benytter `--exit`. Dette skal lø
 Problemet er kun set når det køres på mac - Når der bliver benyttet følgende to `package.json` scripts: `dev-mac` og `test-mac`, så bliver javascript `debug` modulet ikke aktiveret. Der bliver altså ikke logget i konsolen.
 
 En mistanke er at `DEBUG='...'` ikke fungerer som det skal.
+
+###  MissingSchemaError - 08/11/2018
+Den nye function, i `./facades/position/positionFacade` , `findNearbyUsers` smider følgende Error `MissingSchemaError: Schema hasn't been registered for model "User".`. Umiddelbart bunder det i, at User schemaet ikke er blevet registreret til modellen User. Der benyttes `.populate()` som er den function der 'joiner' Position og User.
+

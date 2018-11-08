@@ -39,9 +39,9 @@ async function findNearby(longitude, latitude, maxDistance, minDistance=0) {
                 $maxDistance: maxDistance
             }
         }
-    })
+    }).exec()
 }
-
+/** */
 async function findNearbyUsers(longitude, latitude, maxDistance, minDistance=0) {
     return Position.find({
         location: {
@@ -51,7 +51,7 @@ async function findNearbyUsers(longitude, latitude, maxDistance, minDistance=0) 
                 $maxDistance: maxDistance
             }
         }
-    }).populate('user')
+    }).populate('user').exec()
 }
 
 

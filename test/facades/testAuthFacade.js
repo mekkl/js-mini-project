@@ -20,7 +20,6 @@ mongoose.modelSchemas = {};
 mongoose.connection = {};
 
 describe("Testing the authFacade", function () {
-
   /**
    * Connect to the TEST-DATABASE 
    */
@@ -33,7 +32,6 @@ describe("Testing the authFacade", function () {
   after(function () {
     mongoose.connection.close();
   })
-
 
   let users = [];
   /**

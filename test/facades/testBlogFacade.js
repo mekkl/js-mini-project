@@ -37,7 +37,6 @@ describe("Testing the LocationBlog Facade", function () {
     mongoose.connection.close();
   })
 
-
   let users = [];
   /**
    *  Setup the database in a known state (2 locBlogs + 2 users) before EACH test 

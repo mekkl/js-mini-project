@@ -7,6 +7,7 @@ const debug = require('debug')('test:testUserFacade');
  * ISSUE FIX: was moved to here, from *1.
  */
 const User = require("../../models/User")
+const userFacade = require('../../facades/userFacade');
 
 /**
  *  https://github.com/Automattic/mongoose/issues/1251
@@ -28,7 +29,10 @@ describe("Testing the User Facade", function () {
     await dbSetup(settings.TEST_DB_URI);
   })
 
-  
+  after(function () {
+    mongoose.connection.close();
+  })
+
   let users = [];
   /**
    * Setup the database in a known state (2 users) before EACH test
@@ -63,10 +67,5 @@ describe("Testing the User Facade", function () {
     const users = await userFacade.getAllUsers();
     expect(users.length).to.be.equal(3);
   });
-
-  after(function () {
-    mongoose.connection.close();
-  })
-  
 
 })

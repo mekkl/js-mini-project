@@ -99,15 +99,15 @@ describe("Testing the LocationBlog Facade", function () {
     expect(positions.length).to.be.equal(2);
   });
 
-  it("findNeabyUsers: Should should find two positions given the location and maxDistance", async function () {
+  it("findNeabyUsers: Should should find two positions given the location and maxDistance, with right users.", async function () {
     const longitude = 12.5880
     const latitude = 55.6843
     const maxInMeters = 400
     const popuUsers = await positionFacade.findNearbyUsers(longitude, latitude, maxInMeters)
     
-    // console.log(popuUsers)
-    // expect(popuUsers.length).to.be.equal(2);
-    // expect(popuUsers[0])
+    expect(popuUsers.length).to.be.equal(2);
+    expect(popuUsers[0].user.userName).to.be.equal('hw')
+    expect(popuUsers[1].user.userName).to.be.equal('kw')
   });
 
    

@@ -40,16 +40,32 @@ A simple friend-finder app, where you can log-in, via a phone, provide a radius 
 Will introduce features from 1+2, but this time using Graph-QL, in order to demonstrate the advantages of this new technology
 
 ## Issues
-### Mocha hangs - 06/11/2018
+### #0001 | Mocha hangs - 06/11/2018
 Mocha hænger efter end testing. Ifølge [boneskull](https://boneskull.com/mocha-v4-nears-release/#mochawontforceexit) som skriver følgende "If the `mocha` process is still alive after your tests seem "done", then your tests have scheduled something to happen (asynchronously) and haven't cleaned up after themselves properly. Did you leave a socket open?".
 
 Problemet kan løses ved et quick-fix hvis man benytter `--exit`. Dette skal løses bedre i fremtiden!
 
-### No debug msg - 07/11/2018
+### #0002 | No debug msg - 07/11/2018
 Problemet er kun set når det køres på mac - Når der bliver benyttet følgende to `package.json` scripts: `dev-mac` og `test-mac`, så bliver javascript `debug` modulet ikke aktiveret. Der bliver altså ikke logget i konsolen.
 
 En mistanke er at `DEBUG='...'` ikke fungerer som det skal.
 
-###  MissingSchemaError - 08/11/2018
-Den nye function, i `./facades/position/positionFacade` , `findNearbyUsers` smider følgende Error `MissingSchemaError: Schema hasn't been registered for model "User".`. Umiddelbart bunder det i, at User schemaet ikke er blevet registreret til modellen User. Der benyttes `.populate()` som er den function der 'joiner' Position og User.
+### #0003 | MissingSchemaError - 08/11/2018
+~~Den nye function, i `./facades/position/positionFacade` , `findNearbyUsers` smider følgende Error `MissingSchemaError: Schema hasn't been registered for model "User".`. Umiddelbart bunder det i, at User schemaet ikke er blevet registreret til modellen User. Der benyttes `.populate()` som er den function der 'joiner' Position og User. ~~
 
+#### Fix - 08/11/2018
+Løsningen var et flytte, i alle testFacader, en blok af variabledeklarationer op over:
+```javascript
+mongoose.models = {};
+mongoose.modelSchemas = {};
+mongoose.connection = {};
+```
+
+blokken af variabler der blev flyttet over var f.eks:
+```javascript
+const LocationBlog = require("../../models/LocationBlog");
+const authFacade = require("../../facades/authFacade");
+const User = require("../../models/User");
+```
+
+De to test der synede voldte problemet, og hvor overstående løsning virkede, var `testAuthFacade.js` og `testBlogFacade.js`. For sikkerheds skyld blev ændringen også implementeret i `testPositionFacade.js` og `testUserFacade.js`

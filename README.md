@@ -51,7 +51,7 @@ Problemet er kun set når det køres på mac - Når der bliver benyttet følgend
 En mistanke er at `DEBUG='...'` ikke fungerer som det skal.
 
 ### #0003 | MissingSchemaError - 08/11/2018
-~~Den nye function, i `./facades/position/positionFacade` , `findNearbyUsers` smider følgende Error `MissingSchemaError: Schema hasn't been registered for model "User".`. Umiddelbart bunder det i, at User schemaet ikke er blevet registreret til modellen User. Der benyttes `.populate()` som er den function der 'joiner' Position og User. ~~
+~~Den nye function, i `./facades/position/positionFacade` , `findNearbyUsers` smider følgende Error `MissingSchemaError: Schema hasn't been registered for model "User".`. Umiddelbart bunder det i, at User schemaet ikke er blevet registreret til modellen User. Der benyttes `.populate()` som er den function der 'joiner' Position og User.~~
 
 #### Fix - 08/11/2018
 Løsningen var et flytte, i alle testFacader, en blok af variabledeklarationer op over:

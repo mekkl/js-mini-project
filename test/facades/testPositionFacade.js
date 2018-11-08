@@ -3,10 +3,12 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 const debug = require('debug')('test:testPositionFacade');
-
-const positionFacade = require("../../facades/positionFacade");
+/**
+ * ISSUE FIX: was moved to here, from *1.
+ */
 const User = require("../../models/User");
 const Position = require("../../models/Position");
+const positionFacade = require("../../facades/positionFacade");
 const userFacade = require("../../facades/userFacade");
 
 /**
@@ -16,8 +18,9 @@ mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-
-
+/**
+ * *1.
+ */
 
 describe("Testing the LocationBlog Facade", function () {
 

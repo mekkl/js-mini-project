@@ -3,11 +3,21 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 const debug = require('debug')('test:testUserFacade');
+/**
+ * ISSUE FIX: was moved to here, from *1.
+ */
+const User = require("../../models/User")
 
-//https://github.com/Automattic/mongoose/issues/1251
+/**
+ *  https://github.com/Automattic/mongoose/issues/1251
+ */
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
+
+/**
+ * *1.
+ */
 
 describe("Testing the User Facade", function () {
   /**

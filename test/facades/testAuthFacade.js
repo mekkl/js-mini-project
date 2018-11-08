@@ -3,7 +3,6 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 const debug = require('debug')('test:testAuthFacade');
-
 /**
  * ISSUE FIX: was moved to here, from *1.
  */
@@ -19,8 +18,6 @@ const User = require("../../models/User");
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
-
-
 
 describe("Testing the authFacade", function () {
 

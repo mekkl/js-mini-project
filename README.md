@@ -46,9 +46,12 @@ Mocha hænger efter end testing. Ifølge [boneskull](https://boneskull.com/mocha
 Problemet kan løses ved et quick-fix hvis man benytter `--exit`. Dette skal løses bedre i fremtiden!
 
 ### #0002 | No debug msg - 07/11/2018
-Problemet er kun set når det køres på mac - Når der bliver benyttet følgende to `package.json` scripts: `dev-mac` og `test-mac`, så bliver javascript `debug` modulet ikke aktiveret. Der bliver altså ikke logget i konsolen.
+~~Problemet er kun set når det køres på mac - Når der bliver benyttet følgende to `package.json` scripts: `dev-mac` og `test-mac`, så bliver javascript `debug` modulet ikke aktiveret. Der bliver altså ikke logget i konsolen.~~
 
-En mistanke er at `DEBUG='...'` ikke fungerer som det skal.
+~~En mistanke er at `DEBUG='...'` ikke fungerer som det skal.~~
+
+#### Fix - 08/11/2018
+Scriptet skulle ændres fra `DEBUG=miniproject:* & mocha --recursive --exit` til `DEBUG=miniproject:* mocha --recursive --exit`
 
 ### #0003 | MissingSchemaError - 08/11/2018
 ~~Den nye function, i `./facades/position/positionFacade` , `findNearbyUsers` smider følgende Error `MissingSchemaError: Schema hasn't been registered for model "User".`. Umiddelbart bunder det i, at User schemaet ikke er blevet registreret til modellen User. Der benyttes `.populate()` som er den function der 'joiner' Position og User.~~

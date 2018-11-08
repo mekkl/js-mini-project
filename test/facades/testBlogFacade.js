@@ -4,16 +4,23 @@ const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 
 /**
+ * ISSUE FIX: was moved to here, from *1.
+ */
+const locationBlogFacade = require("../../facades/blogFacade");
+const LocationBlog = require("../../models/LocationBlog");
+const userFacade = require("../../facades/userFacade");
+const User = require("../../models/User");
+
+/**
  *  https://github.com/Automattic/mongoose/issues/1251
  */
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-const locationBlogFacade = require("../../facades/blogFacade");
-const LocationBlog = require("../../models/LocationBlog");
-const userFacade = require("../../facades/userFacade");
-const User = require("../../models/User");
+/**
+ * *1.
+ */
 
 describe("Testing the LocationBlog Facade", function () {
 

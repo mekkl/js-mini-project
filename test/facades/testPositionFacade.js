@@ -4,16 +4,23 @@ const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 
 /**
+ * ISSUE FIX: was moved to here, from *1.
+ */
+const positionFacade = require("../../facades/positionFacade");
+const User = require("../../models/User");
+const Position = require("../../models/Position");
+const userFacade = require("../../facades/userFacade");
+
+/**
  *  https://github.com/Automattic/mongoose/issues/1251
  */
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-const positionFacade = require("../../facades/positionFacade");
-const User = require("../../models/User");
-const Position = require("../../models/Position");
-const userFacade = require("../../facades/userFacade");
+/**
+ * *1.
+ */
 
 
 describe("Testing the LocationBlog Facade", function () {
@@ -98,8 +105,9 @@ describe("Testing the LocationBlog Facade", function () {
     const maxInMeters = 400
     const popuUsers = await positionFacade.findNearbyUsers(longitude, latitude, maxInMeters)
     
-    console.log(popuUsers)
-    // expect(positions.length).to.be.equal(2);
+    // console.log(popuUsers)
+    // expect(popuUsers.length).to.be.equal(2);
+    // expect(popuUsers[0])
   });
 
    

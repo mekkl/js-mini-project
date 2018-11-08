@@ -3,13 +3,20 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 
+/**
+ * ISSUE FIX: was moved to here, from *1.
+ */
+const userFacade = require("../../facades/userFacade");
+const User = require("../../models/User");
+
 //https://github.com/Automattic/mongoose/issues/1251
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-const userFacade = require("../../facades/userFacade");
-const User = require("../../models/User");
+/**
+ * *1.
+ */
 
 describe("Testing the User Facade", function () {
   /**

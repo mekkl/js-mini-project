@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const User = require("../models/User");
-const Position = require("../models/Position")
 const userFacade = require('./userFacade')
 const debug = require('debug')('miniproject:authFacade');
 const bcrypt = require('bcrypt')

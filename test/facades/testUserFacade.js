@@ -10,7 +10,6 @@ mongoose.connection = {};
 
 const userFacade = require("../../facades/userFacade");
 const User = require("../../models/User");
-let connection = null;
 
 describe("Testing the User Facade", function () {
   /**

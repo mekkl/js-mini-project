@@ -15,7 +15,6 @@ const Position = require("../../models/Position");
 const userFacade = require("../../facades/userFacade");
 const User = require("../../models/User");
 
-let connection = null;
 describe("Testing the LocationBlog Facade", function () {
 
   /**
@@ -32,7 +31,6 @@ describe("Testing the LocationBlog Facade", function () {
   
 
   let users = [];
-  let positions = [];
   /**
    *  Setup the database in a known state (2 locBlogs + 2 users) before EACH test 
    */

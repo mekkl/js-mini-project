@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const userFacade = require('../../facades/userFacade');
 const blogFacade = require('../../facades/blogFacade');
 
 

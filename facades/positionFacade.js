@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
-const User = require("../models/User");
 const Position = require('../models/Position');
 const userFacade = require('./userFacade');
 const debug = require('debug')('miniproject:positionFacade');
-const SECONDS = 1;
-const EXPIRES = 60  * SECONDS ;
 
 
 function getAll() {

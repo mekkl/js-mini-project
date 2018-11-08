@@ -8,13 +8,10 @@ mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
 
-const locationBlogFacade = require("../../facades/blogFacade");
 const LocationBlog = require("../../models/LocationBlog");
-const userFacade = require("../../facades/userFacade");
 const authFacade = require("../../facades/authFacade");
 const User = require("../../models/User");
 
-let connection = null;
 describe("Testing the authFacade", function () {
 
   /**
@@ -31,7 +28,6 @@ describe("Testing the authFacade", function () {
   
 
   let users = [];
-  let blogs = [];
   /**
    *  Setup the database in a known state (2 locBlogs + 2 users) before EACH test 
    */
@@ -56,7 +52,7 @@ it("login (2 args): should be a succesfull attempt", async function () {
 
 it("login (2 args): should be a falied attempt", async function () {
     try {
-        const user = await authFacade.login('kw', 'tset')
+        await authFacade.login('kw', 'tset')
     } catch(err) {
         expect(err.msg).to.be.equal('failed to authenticate from given username and/or password')
     }

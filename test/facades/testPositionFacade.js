@@ -97,6 +97,7 @@ describe("Testing the LocationBlog Facade", function () {
     const latitude = 55.6843
     const maxInMeters = 400
     const popuUsers = await positionFacade.findNearbyUsers(longitude, latitude, maxInMeters)
+    
     console.log(popuUsers)
     // expect(positions.length).to.be.equal(2);
   });

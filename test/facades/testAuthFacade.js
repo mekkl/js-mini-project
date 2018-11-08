@@ -44,8 +44,8 @@ describe("Testing the authFacade", function () {
 
     await LocationBlog.deleteMany({}).exec()
     blogs = await Promise.all([
-        new LocationBlog({ info: 'Crazy place', pos: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
-        new LocationBlog({ info: 'Another crazy place', pos: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
+        new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
+        new LocationBlog({ info: 'Another crazy place', position: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
     ])
   })
 

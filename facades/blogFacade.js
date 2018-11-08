@@ -6,7 +6,7 @@ function getAllBlogs() {
 }
 
 function addLocationBlog(info, author, longitude, latitude) {
-    const LocationBlogDetail = { info, pos: { longitude, latitude }, author };
+    const LocationBlogDetail = { info, position: { longitude, latitude }, author };
     const blog = new Blog(LocationBlogDetail);
     return blog.save();
 }

@@ -47,9 +47,9 @@ describe("Testing the LocationBlog Facade", function () {
 
     await Position.deleteMany({}).exec()
     position = await Promise.all([
-        new Position({ user: users[1]._id, loc: { type: 'Point', coordinates: [12.5931, 55.6839] } }).save(),
-        new Position({ user: users[0]._id, loc: { type: 'Point', coordinates: [12.5828, 55.6842] } }).save(),
-        new Position({ user: users[3]._id, loc: { type: 'Point', coordinates: [12.5775, 55.6857] } }).save()
+        new Position({ user: users[1]._id, location: { type: 'Point', coordinates: [12.5931, 55.6839] } }).save(),
+        new Position({ user: users[0]._id, location: { type: 'Point', coordinates: [12.5828, 55.6842] } }).save(),
+        new Position({ user: users[3]._id, location: { type: 'Point', coordinates: [12.5775, 55.6857] } }).save()
     ])
   })
 
@@ -60,9 +60,9 @@ describe("Testing the LocationBlog Facade", function () {
 
   it("getByUsername: Should find the right positions from given usernames", async function () {
     let position = await positionFacade.getByUsername('kw');
-    expect(position.loc.coordinates[0]).to.be.equal(12.5828);
+    expect(position.location.coordinates[0]).to.be.equal(12.5828);
     position = await positionFacade.getByUsername('hw');
-    expect(position.loc.coordinates[0]).to.be.equal(12.5931);
+    expect(position.location.coordinates[0]).to.be.equal(12.5931);
   });
 
   it("updateOrCreate: Should update the position with new coordinates given user and coordinates", async function () {
@@ -71,8 +71,8 @@ describe("Testing the LocationBlog Facade", function () {
     const latitude = 32.4586858
     const position = await positionFacade.updateOrCreate(user._id, longitude, latitude)
 
-    expect(position.loc.coordinates[1]).to.be.equal(latitude);
-    expect(position.loc.coordinates[0]).to.be.equal(longitude);
+    expect(position.location.coordinates[1]).to.be.equal(latitude);
+    expect(position.location.coordinates[0]).to.be.equal(longitude);
   });
 
   it("updateOrCreate: Should create the position with new coordinates given user and coordinates", async function () {
@@ -81,8 +81,8 @@ describe("Testing the LocationBlog Facade", function () {
     const latitude = 32.4586858
     const position = await positionFacade.updateOrCreate(user._id, longitude, latitude)
 
-    expect(position.loc.coordinates[1]).to.be.equal(latitude);
-    expect(position.loc.coordinates[0]).to.be.equal(longitude);
+    expect(position.location.coordinates[1]).to.be.equal(latitude);
+    expect(position.location.coordinates[0]).to.be.equal(longitude);
   });
 
   it("findNeaby: Should should find two positions given the location and maxDistance", async function () {

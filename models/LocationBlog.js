@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const locationBlogSchema = new Schema({
   info: {type: String, required: true},
-  pos : {
+  position : {
     longitude: {type: Number, required: true},
     latitude : {type: Number, required: true}
   },

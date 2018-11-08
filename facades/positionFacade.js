@@ -22,7 +22,7 @@ function getAll() {
 function updateOrCreate(userId, longitude, latitude) {
     return Position.findOneAndUpdate(
             {user: userId}, 
-            {$set: {user: userId, created: Date.now(), loc: { type: 'Point', coordinates: [longitude, latitude]}}},
+            {$set: {user: userId, created: Date.now(), location: { type: 'Point', coordinates: [longitude, latitude]}}},
             {upsert: true, new: true}
         ).exec()
 }
@@ -34,7 +34,7 @@ async function getByUsername(username) {
 
 async function findNearby(longitude, latitude, maxDistance, minDistance=0) {
     return Position.find({
-        loc: {
+        location: {
             $near: {
                 $geometry: { type: 'Point', coordinates: [longitude, latitude] },
                 $minDistance: minDistance,

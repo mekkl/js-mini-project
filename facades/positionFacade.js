@@ -2,34 +2,28 @@ const mongoose = require("mongoose");
 const Position = require('../models/Position');
 const userFacade = require('./userFacade');
 const debug = require('debug')('miniproject:positionFacade');
+const User = require("../models/User");
 
 
 function getAll() {
     return Position.find({}).exec();
 }
 
-/**
- * 
- * @param {Object id} userId 
- * @param {float} longitude 
- * @param {float} latitude 
- * 
- * @returns {Promise} updated/created Position
- */
+
 function updateOrCreate(userId, longitude, latitude) {
     return Position.findOneAndUpdate(
-            {user: userId}, 
-            {$set: {user: userId, created: Date.now(), location: { type: 'Point', coordinates: [longitude, latitude]}}},
-            {upsert: true, new: true}
-        ).exec()
+        { user: userId },
+        { $set: { user: userId, created: Date.now(), location: { type: 'Point', coordinates: [longitude, latitude] } } },
+        { upsert: true, new: true }
+    ).exec()
 }
 
 async function getByUsername(username) {
     const user = await userFacade.findByUsername(username)
-    return Position.findOne({user: user._id}).exec()
+    return Position.findOne({ user: user._id }).exec()
 }
 
-async function findNearby(longitude, latitude, maxDistance, minDistance=0) {
+async function findNearby(longitude, latitude, maxDistance, minDistance = 0) {
     return Position.find({
         location: {
             $near: {
@@ -41,7 +35,7 @@ async function findNearby(longitude, latitude, maxDistance, minDistance=0) {
     }).exec()
 }
 /** */
-async function findNearbyUsers(longitude, latitude, maxDistance, minDistance=0) {
+async function findNearbyUsers(longitude, latitude, maxDistance, minDistance = 0) {
     return Position.find({
         location: {
             $near: {
@@ -55,9 +49,9 @@ async function findNearbyUsers(longitude, latitude, maxDistance, minDistance=0) 
 
 
 module.exports = {
-getAll,
-getByUsername,
-updateOrCreate,
-findNearby,
-findNearbyUsers,
+    getAll,
+    getByUsername,
+    updateOrCreate,
+    findNearby,
+    findNearbyUsers,
 }

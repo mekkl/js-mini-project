@@ -8,8 +8,8 @@ async function login(username, password) {
         const user = await userFacade.findByUsername(username)
         const verified = (user && await bcrypt.compare(password, user.password))
         if (verified) return user
-        else throw {msg: 'failed to authenticate from given username and/or password'}
-    } catch(err) {
+        else throw { msg: 'failed to authenticate from given username and/or password' }
+    } catch (err) {
         throw err
     }
 }

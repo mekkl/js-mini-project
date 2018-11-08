@@ -34,7 +34,7 @@ describe("Testing the authFacade", function () {
   after(function () {
     mongoose.connection.close();
   })
-  
+
 
   let users = [];
   /**
@@ -49,23 +49,23 @@ describe("Testing the authFacade", function () {
 
     await LocationBlog.deleteMany({}).exec()
     blogs = await Promise.all([
-        new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
-        new LocationBlog({ info: 'Another crazy place', position: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
+      new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
+      new LocationBlog({ info: 'Another crazy place', position: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
     ])
   })
 
-it("login (2 args): should be a succesfull attempt", async function () {
+  it("login (2 args): should be a succesfull attempt", async function () {
     const user = await authFacade.login('kw', 'test');
     expect(user.lastName).to.be.equal('Wonnegut');
-});
+  });
 
-it("login (2 args): should be a falied attempt", async function () {
+  it("login (2 args): should be a falied attempt", async function () {
     try {
-        await authFacade.login('kw', 'tset')
-    } catch(err) {
-        expect(err.msg).to.be.equal('failed to authenticate from given username and/or password')
+      await authFacade.login('kw', 'tset')
+    } catch (err) {
+      expect(err.msg).to.be.equal('failed to authenticate from given username and/or password')
     }
-});
+  });
 
 
 

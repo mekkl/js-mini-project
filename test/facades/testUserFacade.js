@@ -3,20 +3,18 @@ const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
 
-/**
- * ISSUE FIX: was moved to here, from *1.
- */
-const userFacade = require("../../facades/userFacade");
-const User = require("../../models/User");
+
+
+var mongoose = require("mongoose");
+const expect = require("chai").expect;
+const connect = require("../../dbSetup");
+var userFacade = require("../../facades/userFacade");
+var User = require('../../models/User');
 
 //https://github.com/Automattic/mongoose/issues/1251
 mongoose.models = {};
 mongoose.modelSchemas = {};
 mongoose.connection = {};
-
-/**
- * *1.
- */
 
 describe("Testing the User Facade", function () {
   /**
@@ -27,9 +25,6 @@ describe("Testing the User Facade", function () {
     await dbSetup(settings.TEST_DB_URI);
   })
 
-  after(function () {
-    mongoose.connection.close();
-  })
   
   let users = [];
   /**
@@ -65,5 +60,10 @@ describe("Testing the User Facade", function () {
     const users = await userFacade.getAllUsers();
     expect(users.length).to.be.equal(3);
   });
+
+  after(function () {
+    mongoose.connection.close();
+  })
+  
 
 })

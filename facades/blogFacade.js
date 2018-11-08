@@ -12,7 +12,7 @@ function addLocationBlog(info, author, longitude, latitude) {
 }
 
 function likeLocationBlog(id, userId) {
-    return LocationBlog.findOneAndUpdate({_id: id}, {$push: {likedBy: userId}}, {new: true}).exec();
+    return LocationBlog.findOneAndUpdate({ _id: id }, { $push: { likedBy: userId } }, { new: true }).exec();
 }
 
 module.exports = {

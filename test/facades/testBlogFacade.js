@@ -35,7 +35,7 @@ describe("Testing the LocationBlog Facade", function () {
   after(function () {
     mongoose.connection.close();
   })
-  
+
 
   let users = [];
   /**
@@ -50,8 +50,8 @@ describe("Testing the LocationBlog Facade", function () {
 
     await LocationBlog.deleteMany({}).exec()
     blogs = await Promise.all([
-        new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
-        new LocationBlog({ info: 'Another crazy place', position: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
+      new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
+      new LocationBlog({ info: 'Another crazy place', position: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
     ])
   })
 
@@ -64,7 +64,7 @@ describe("Testing the LocationBlog Facade", function () {
     const blogs = await locationBlogFacade.getAllBlogs();
     const users = await userFacade.getAllUsers();
     const blog = await locationBlogFacade.likeLocationBlog(blogs[0]._id, users[1]._id)
-    
+
     expect(blog.likedBy.length).to.be.equal(1);
   });
 

@@ -6,20 +6,20 @@ const Position = require("../models/Position.js");
 
 //Utility Function to create users
 function userCreate(firstName, lastName, userName, password, email, type, company, companyUrl) {
-    const job = [{ type, company, companyUrl }, { type, company, companyUrl }];
-    const userDetail = { firstName, lastName, userName, email, password, job };
-    const user = new User(userDetail);
-    return user.save();
+  const job = [{ type, company, companyUrl }, { type, company, companyUrl }];
+  const userDetail = { firstName, lastName, userName, email, password, job };
+  const user = new User(userDetail);
+  return user.save();
 }
 
 //Utility Function to create Positions
 function positionCreator(lon, lat, userId, dateInFuture) {
-    const posDetail = { user: userId, loc: { coordinates: [lon, lat] } }
-    if (dateInFuture) {
-      posDetail.created = "2022-09-25T20:40:21.899Z"
-    }
-    const pos = new Position(posDetail);
-    return pos.save();
+  const posDetail = { user: userId, loc: { coordinates: [lon, lat] } }
+  if (dateInFuture) {
+    posDetail.created = "2022-09-25T20:40:21.899Z"
+  }
+  const pos = new Position(posDetail);
+  return pos.save();
 }
 //Utility Function to create LocationBlogs
 function locationBlogCreator(info, author, longitude, latitude) {
@@ -29,7 +29,7 @@ function locationBlogCreator(info, author, longitude, latitude) {
 }
 // Here we will setup users
 async function createUsers() {
-  
+
   await User.deleteMany({});
   await Position.deleteMany({});
   await LocationBlog.deleteMany({});
@@ -41,7 +41,7 @@ async function createUsers() {
     userCreate("Iris", "Wonnegut", "iw", "test", "a@b.dk", "A type", "comp", "comp.url"),
   ]
   const users = await Promise.all(userPromises);
-  
+
   const positionPromises = [
     positionCreator(10, 11, users[0]._id),
     positionCreator(11, 12, users[1]._id, true),

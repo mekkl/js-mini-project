@@ -8,7 +8,7 @@ function getAllUsers() {
 }
 
 async function addUser(firstName, lastName, userName, password, email) {
-  const userDetails = { firstName, lastName, userName, password, email};
+  const userDetails = { firstName, lastName, userName, password, email };
   const user = new User(userDetails);
 
   return user.save();
@@ -16,11 +16,11 @@ async function addUser(firstName, lastName, userName, password, email) {
 
 function findByUsername(username) {
   debug(username)
-  return User.findOne({userName: username}).exec()
+  return User.findOne({ userName: username }).exec()
 }
 
 function findById(id) {
-  return User.findById({ _id:id }).exec();
+  return User.findById({ _id: id }).exec();
 }
 
 module.exports = {

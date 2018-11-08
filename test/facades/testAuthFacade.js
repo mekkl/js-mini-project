@@ -28,6 +28,7 @@ describe("Testing the authFacade", function () {
    * Connect to the TEST-DATABASE 
    */
   before(async function () {
+
     this.timeout(settings.MOCHA_TEST_TIMEOUT);
     await dbSetup(settings.TEST_DB_URI);
   })

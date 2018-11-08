@@ -75,7 +75,7 @@ const User = require("../../models/User");
 De to test der synede voldte problemet, og hvor overstående løsning virkede, var `testAuthFacade.js` og `testBlogFacade.js`. For sikkerheds skyld blev ændringen også implementeret i `testPositionFacade.js` og `testUserFacade.js`
 
 ### #0004 | exit code 3228369023 - 08/11/2018
-Når der på en Windows maskine skal tilføje data til db, indtil videre kun set ved en bulk create, så ses det, at følgende error kommer `error Command failed with exit code 3228369023`. Denne error dukker KUN op ved en bulk indsætning: 
+~~Når der på en Windows maskine skal tilføje data til db, indtil videre kun set ved en bulk create, så ses det, at følgende error kommer `error Command failed with exit code 3228369023`. Denne error dukker KUN op ved en bulk indsætning:~~ 
 ```javascript
 users = await Promise.all([
     new User({ firstName: "Kurt", lastName: "Wonnegut", userName: "kw", password: "test", email: "a@b.dk" }).save(),
@@ -83,7 +83,7 @@ users = await Promise.all([
     ])
 ```
 
-eller:
+~~eller:~~
 ```javascript
 users = await User.insertMany([
     new User({ firstName: "Bruce", lastName: "Wayne", userName: "joker", password: "test", email: "bat@man.org" }),
@@ -91,8 +91,14 @@ users = await User.insertMany([
     ], { ordered: true })
 ```
 
-men ikke: 
+~~men ikke:~~
 ```javascript
 await Position.deleteMany({}).exec();
 ```
 
+#### Fix - 08/11/2018
+Problemet skyldtes måske følgende: *"This error code (3228369023 red.) is usually due to antivirus or malware scanner interfering with the npm install ... Disable or correctly configure your virus scanners and malware scanners."* Selvom jeg klonede projektet og downloadede afhængighederne med antivirus slået fra, så hjalp det ikke. 
+
+Problemet opstod kun på min egen Windows maskine. Det var nemlig testet på en anden også.
+
+Ved download af den nye LTS node version, blev problemet løst.

@@ -27,6 +27,7 @@ function locationBlogCreator(info, author, longitude, latitude) {
   const blog = new LocationBlog(LocationBlogDetail);
   return blog.save();
 }
+
 // Here we will setup users
 async function createUsers() {
 
@@ -50,6 +51,7 @@ async function createUsers() {
   const positions = await Promise.all(positionPromises);
 
   try {
+    
     const blogPromises = [
       locationBlogCreator("Cool Place", users[0]._id, 26, 28),
       locationBlogCreator("Another Cool Place", users[0]._id, 56, 56),

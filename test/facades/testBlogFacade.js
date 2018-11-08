@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
+const debug = require('debug')('test:testBlogFacade');
 
 /**
  * ISSUE FIX: was moved to here, from *1.

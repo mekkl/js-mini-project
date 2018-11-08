@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const expect = require("chai").expect;
 const dbSetup = require("../../dbSetup");
 const settings = require("../../settings")
+const debug = require('debug')('test:testAuthFacade');
 
 /**
  * ISSUE FIX: was moved to here, from *1.
@@ -46,7 +47,7 @@ describe("Testing the authFacade", function () {
       new User({ firstName: "Kurt", lastName: "Wonnegut", userName: "kw", password: "test", email: "a@b.dk" }).save(),
       new User({ firstName: "Hanne", lastName: "Wonnegut", userName: "hw", password: "test", email: "b@b.dk" }).save(),
     ])
-
+    
     await LocationBlog.deleteMany({}).exec()
     blogs = await Promise.all([
       new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),

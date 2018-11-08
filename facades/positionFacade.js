@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Position = require('../models/Position');
 const userFacade = require('./userFacade');
 const debug = require('debug')('miniproject:positionFacade');
+const User = require("../models/User");
 
 
 function getAll() {
@@ -41,10 +42,23 @@ async function findNearby(longitude, latitude, maxDistance, minDistance=0) {
     })
 }
 
+async function findNearbyUsers(longitude, latitude, maxDistance, minDistance=0) {
+    return Position.find({
+        location: {
+            $near: {
+                $geometry: { type: 'Point', coordinates: [longitude, latitude] },
+                $minDistance: minDistance,
+                $maxDistance: maxDistance
+            }
+        }
+    }).populate('user')
+}
+
 
 module.exports = {
 getAll,
 getByUsername,
 updateOrCreate,
 findNearby,
+findNearbyUsers,
 }

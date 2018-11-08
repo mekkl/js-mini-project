@@ -11,9 +11,10 @@ mongoose.modelSchemas = {};
 mongoose.connection = {};
 
 const positionFacade = require("../../facades/positionFacade");
+const User = require("../../models/User");
 const Position = require("../../models/Position");
 const userFacade = require("../../facades/userFacade");
-const User = require("../../models/User");
+
 
 describe("Testing the LocationBlog Facade", function () {
 
@@ -88,8 +89,16 @@ describe("Testing the LocationBlog Facade", function () {
     const latitude = 55.6843
     const maxInMeters = 400
     const positions = await positionFacade.findNearby(longitude, latitude, maxInMeters)
-
     expect(positions.length).to.be.equal(2);
+  });
+
+  it("findNeabyUsers: Should should find two positions given the location and maxDistance", async function () {
+    const longitude = 12.5880
+    const latitude = 55.6843
+    const maxInMeters = 400
+    const popuUsers = await positionFacade.findNearbyUsers(longitude, latitude, maxInMeters)
+    console.log(popuUsers)
+    // expect(positions.length).to.be.equal(2);
   });
 
    

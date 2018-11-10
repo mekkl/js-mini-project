@@ -24,7 +24,7 @@ async function login(username, password, latitude, longitude, radius) {
                 }
             }).filter(ele => ele.username !== username) // filter out the user who logs in
         }
-        else throw { msg: 'failed to authenticate from given username and/or password' }
+        else throw 'failed to authenticate from given username and/or password'
     } catch (err) {
         throw { msg: err }
     }

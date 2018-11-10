@@ -22,7 +22,7 @@ mongoose.connection = {};
  * *1.
  */
 
-describe("Testing the LocationBlog Facade", function () {
+describe("Testing the Position Facade", function () {
   /**
    *Connect to the TEST-DATABASE 
    */

@@ -62,9 +62,9 @@ describe("Testing the LocationBlog Facade", function () {
   });
 
   it("getByUsername: Should find the right positions from given usernames", async function () {
-    let position = await positionFacade.getByUsername('kw');
+    let position = await positionFacade.getByUser(users[0]._id);
     expect(position.location.coordinates[0]).to.be.equal(12.5828);
-    position = await positionFacade.getByUsername('hw');
+    position = await positionFacade.getByUser(users[1]._id);
     expect(position.location.coordinates[0]).to.be.equal(12.5931);
   });
 

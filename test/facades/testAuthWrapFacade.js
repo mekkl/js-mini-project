@@ -7,7 +7,7 @@ const debug = require('debug')('test:testAuthFacade');
  * ISSUE FIX: was moved to here, from *1.
  */
 const LocationBlog = require("../../models/LocationBlog");
-const authFacade = require("../../facades/authFacade");
+const authFacade = require("../../facades/authWrapFacade");
 const User = require("../../models/User");
 
 /**

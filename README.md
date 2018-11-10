@@ -4,7 +4,7 @@
 
 [mLab (DB)](https://mlab.com/home)
 
-## Usage
+## Setup
 Download afhængiheder:
 ```
 $ yarn
@@ -14,7 +14,10 @@ eller,
 $ npm install
 ```
 
-Herefter kan benyttes følgende scripts (se `package.json` for mere info). `start`, `dev-mac`, `dev-win`, `test-mac`, `test-win`, `test-dev-mac`, `test-dev-win`
+For at oprette forbindelse til en db, så skal der oprettes en `settings.js` fil med samme indhold som `settings.example.js` med undtagelser af url'en til db'en som skal udfyldes. 
+
+## Usage
+Der kan benyttes følgende scripts (se `package.json` for mere info). `start`, `dev-mac`, `dev-win`, `test-mac`, `test-win`, `test-dev-mac`, `test-dev-win`
 
 ## Mini Project
 To make the technologies we are going to cover throughout the semester a bit more interesting, many of the coming exercises will be focused on a common project idea, as outlined below:

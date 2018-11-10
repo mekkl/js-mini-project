@@ -9,20 +9,13 @@ async function login(username, password, latitude, longitude, radius) {
         const user = await userFacade.findByUsername(username)
         const verified = (user && await bcrypt.compare(password, user.password))
 
-        /**
-         * if username and password is correct
-         */
         if (verified) {
             posWithUsers = await positionFacade.findNearbyUsers(longitude, latitude, radius);
 
-            /**
-             * updating users position
-             */
+            // updating users position
             await positionFacade.updateOrCreate(user._id, longitude, latitude)
 
-            /**
-             * formatting outpuut
-             */
+            // formatting output
             return posWithUsers.map(ele => {
                 return {
                     'username': ele.user.userName,

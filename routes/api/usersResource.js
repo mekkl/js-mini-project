@@ -23,7 +23,21 @@ router.route('/')
             res.json(user)
         } catch (err) {
             res.status(500)
-            res.json({ error: 'an error happened' })
+            res.json({ msg: 'an error happened', status: 500 })
+        }
+    });
+
+router.route('/:username')
+    // GET: get all the users (accessed at GET http://localhost:PORT/api/users)
+    .get(async function (req, res) {
+        try {
+            const username = req.params.username;
+            const users = await userFacade.findByUsername(username)
+            res.json(users)
+        } catch (err) {
+            debug(err)
+            res.status(500)
+            res.json({ msg: 'an error happened', status: 500 })
         }
     });
 

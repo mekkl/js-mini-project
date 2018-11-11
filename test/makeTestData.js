@@ -3,9 +3,11 @@ require("../dbSetup.js")();
 const User = require("../models/User.js");
 const LocationBlog = require("../models/LocationBlog.js");
 const Position = require("../models/Position.js");
+const debug = require('debug')('miniproject:makeTestData')
 
 //Utility Function to create users
 function userCreate(firstName, lastName, userName, password, email, type, company, companyUrl) {
+  debug('building user')
   const job = [{ type, company, companyUrl }, { type, company, companyUrl }];
   const userDetail = { firstName, lastName, userName, email, password, job };
   const user = new User(userDetail);
@@ -14,7 +16,8 @@ function userCreate(firstName, lastName, userName, password, email, type, compan
 
 //Utility Function to create Positions
 function positionCreator(lon, lat, userId, dateInFuture) {
-  const posDetail = { user: userId, loc: { coordinates: [lon, lat] } }
+  debug('building position')
+  const posDetail = { user: userId, location: { type: 'Point', coordinates: [lon, lat] } }
   if (dateInFuture) {
     posDetail.created = "2022-09-25T20:40:21.899Z"
   }
@@ -23,45 +26,48 @@ function positionCreator(lon, lat, userId, dateInFuture) {
 }
 //Utility Function to create LocationBlogs
 function locationBlogCreator(info, author, longitude, latitude) {
-  const LocationBlogDetail = { info, pos: { longitude, latitude }, author };
+  debug('building locationblog')
+  const LocationBlogDetail = { info, position: { longitude, latitude }, author };
   const blog = new LocationBlog(LocationBlogDetail);
   return blog.save();
 }
 
 // Here we will setup users
 async function createUsers() {
-
+  debug('deleting current db data')
   await User.deleteMany({});
   await Position.deleteMany({});
   await LocationBlog.deleteMany({});
 
+  debug('creating users')
   const userPromises = [
     userCreate("Kurt", "Wonnegut", "kw", "test", "a@b.dk", "A type", "comp", "comp.url"),
     userCreate("Hanne", "Wonnegut", "hw", "test", "a@b.dk", "A type", "comp", "comp.url"),
     userCreate("Janne", "Wonnegut", "jw", "test", "a@b.dk", "A type", "comp", "comp.url"),
     userCreate("Iris", "Wonnegut", "iw", "test", "a@b.dk", "A type", "comp", "comp.url"),
   ]
+  debug('await users creating')
   const users = await Promise.all(userPromises);
 
+  debug('creating positions')
   const positionPromises = [
-    positionCreator(10, 11, users[0]._id),
-    positionCreator(11, 12, users[1]._id, true),
-    positionCreator(11, 13, users[2]._id, true)
+    positionCreator(12.5931, 55.6839, users[0]._id),
+    positionCreator(12.5931, 55.6839, users[1]._id, true),
+    positionCreator(12.5931, 55.6839, users[2]._id, true)
   ]
+  debug('await positions creating')
   const positions = await Promise.all(positionPromises);
 
-  try {
-    
-    const blogPromises = [
-      locationBlogCreator("Cool Place", users[0]._id, 26, 28),
-      locationBlogCreator("Another Cool Place", users[0]._id, 56, 56),
-      locationBlogCreator("Yet Another Cool Place", users[0]._id, 28, 56),
-      locationBlogCreator("The coolest Place", users[3]._id, 34, 56),
-    ];
-    const blogs = await Promise.all(blogPromises);
-  } catch (err) {
-    console.log("UPPPS: ", err);
-  }
+
+  const blogPromises = [
+    locationBlogCreator("Cool Place", users[0]._id, 26, 28),
+    locationBlogCreator("Another Cool Place", users[0]._id, 56, 56),
+    locationBlogCreator("Yet Another Cool Place", users[0]._id, 28, 56),
+    locationBlogCreator("The coolest Place", users[3]._id, 34, 56),
+  ];
+  debug('await locationblog creating')
+  const blogs = await Promise.all(blogPromises);
+
   //Check the virtuals
   console.log("Slug for a Cool Place", blogs[0].slug);
 
@@ -70,5 +76,5 @@ async function createUsers() {
   blogs[0].likedBy.push(users[2]); //Like by Janne
   console.log("Likes for a Cool Place", blogs[0].likedByCount);
 }
-
+createUsers()
 module.exports = createUsers;

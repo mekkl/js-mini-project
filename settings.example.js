@@ -1,5 +1,5 @@
-const DEV_DB_URI = "URL FOR YOU DEVELOPMENT DB";
-const TEST_DB_URI = "URL FOR YOU TEST DB";
+const DEV_DB_URI = "<dev_db_url>";
+const TEST_DB_URI = "<test_db_url>";
 const MOCHA_TEST_TIMEOUT = 5000;
 
 module.exports = {

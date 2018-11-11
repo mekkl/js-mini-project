@@ -9,7 +9,7 @@ eller,
 $ npm install
 ```
 
-For at oprette forbindelse til en db, så skal der oprettes en `settings.js` fil med samme indhold som `settings.example.js` med undtagelser af url'en til db'en som skal udfyldes. __Kør derfor nedestående kommandoer fra roden af projektet__.
+For at oprette forbindelse til en db, så skal der oprettes en `settings.js` fil med samme indhold som `settings.example.js` med undtagelser af url'en til db'en som skal udfyldes. __Kør derfor nedestående kommandoer fra roden af projektet__, og indsæt url til db.
 
 For Windows:
 ```

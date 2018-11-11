@@ -1,0 +1,4 @@
+Todo: 
+    [] go igennem alle status koder for api resourcer.
+    [] opstil ny test strukture (test manager) så '--recusive' kan fjernes. Mere kontrol. 
+    [] lav test til api resourcer

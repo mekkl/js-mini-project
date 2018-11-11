@@ -28,12 +28,13 @@ router.route('/')
     });
 
 router.route('/:username')
-    // GET: get all the users (accessed at GET http://localhost:PORT/api/users)
+    // GET: get a specific user given username (accessed at GET http://localhost:PORT/api/users:username)
     .get(async function (req, res) {
         try {
             const username = req.params.username;
-            const users = await userFacade.findByUsername(username)
-            res.json(users)
+            const user = await userFacade.findByUsername(username)
+            if (user) res.json(user) 
+            else res.json({msg: `no user with username: ${username}`})
         } catch (err) {
             debug(err)
             res.status(500)

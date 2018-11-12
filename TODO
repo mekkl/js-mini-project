@@ -3,3 +3,4 @@ Todo:
     [] opstil ny test strukture (test manager) så '--recusive' kan fjernes. Mere kontrol. 
     [] lav test til api resourcer.
     [] benyt makeTestData.js i mocha testene, så der bliver genereret ens data for alle test.
+    [] implementer miljø-variabler

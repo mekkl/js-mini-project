@@ -4,3 +4,4 @@ Todo:
     [] lav test til api resourcer.
     [] benyt makeTestData.js i mocha testene, så der bliver genereret ens data for alle test.
     [] implementer miljø-variabler
+    [] implementer jwt

@@ -1,8 +1,8 @@
-require("../dbSetup.js")();
+require("./dbSetup.js")();
 
-const User = require("../models/User.js");
-const LocationBlog = require("../models/LocationBlog.js");
-const Position = require("../models/Position.js");
+const User = require("./models/User.js");
+const LocationBlog = require("./models/LocationBlog.js");
+const Position = require("./models/Position.js");
 const debug = require('debug')('miniproject:makeTestData')
 
 //Utility Function to create users

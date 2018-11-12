@@ -1,80 +1,35 @@
 const expect = require("chai").expect;
-
-const LocationBlog = require("../../models/LocationBlog");
 const authFacade = require("../../facades/authWrapFacade");
-const User = require("../../models/User");
-const Position = require('../../models/Position');
-const positionFacade = require("../../facades/positionFacade");
 
-
-function testModule(){
-
-    describe("Testing the authFacade", function () {
-        let users = [];
-        /**
-         *  Setup the database in a known state (2 locBlogs + 2 users) before EACH test 
-         */
-        beforeEach(async function () {
-            await User.deleteMany({}).exec();
-            users = await Promise.all([
-                new User({ firstName: "Kurt", lastName: "Wonnegut", userName: "kw", password: "test", email: "a@b.dk" }).save(),
-                new User({ firstName: "Hanne", lastName: "Wonnegut", userName: "hw", password: "test", email: "b@b.dk" }).save(),
-                new User({ firstName: "Mikkel", lastName: "Larsen", userName: "ml", password: "test", email: "b@b.dk" }).save(),
-                new User({ firstName: "Jørgen", lastName: "Madsen", userName: "jm", password: "test", email: "b@b.dk" }).save(),
-            ])
-        
-            await Position.deleteMany({}).exec()
-            positions = await Promise.all([
-                new Position({ user: users[1]._id, location: { type: 'Point', coordinates: [12.5931, 55.6839] } }).save(),
-                new Position({ user: users[0]._id, location: { type: 'Point', coordinates: [12.5828, 55.6842] } }).save(),
-                new Position({ user: users[3]._id, location: { type: 'Point', coordinates: [12.5775, 55.6857] } }).save()
-            ])
-            
-            await LocationBlog.deleteMany({}).exec()
-            blogs = await Promise.all([
-                new LocationBlog({ info: 'Crazy place', position: { longitude: 26, latitude: 28 }, author: users[0]._id }).save(),
-                new LocationBlog({ info: 'Another crazy place', position: { longitude: 56, latitude: 65 }, author: users[0]._id }).save()
-            ])
-        })
-    
-        it("login: should be a succesfull attempt, with two friends", async function () {
-        const longitude = 12.5880
-        const latitude = 55.6843
-        const maxInMeters = 400
-        const friendsInArea = await authFacade.login('ml', 'test', latitude, longitude, maxInMeters);
-        expect(friendsInArea.length).to.be.equal(2);
-        expect(friendsInArea[0].username).to.be.equal('hw');
-        expect(friendsInArea[1].username).to.be.equal('kw');
-        });
-    
-        it("login: should show one friend (the user self filtered out)", async function () {
-        const longitude = 12.5880
-        const latitude = 55.6843
-        const maxInMeters = 400
-        const friendsInArea = await authFacade.login('kw', 'test', latitude, longitude, maxInMeters);
-        expect(friendsInArea.length).to.be.equal(1);
-        expect(friendsInArea[0].username).to.be.equal('hw');
-        });
-    
-        it("login: update the user's posistion", async function () {
-        const longitude = 12.5880
-        const latitude = 55.6843
-        const maxInMeters = 400
-        await authFacade.login('hw', 'test', latitude, longitude, maxInMeters);
-        position = await positionFacade.getByUser(users[1])
-        expect(position.location.coordinates[0]).to.be.equal(longitude);
-        expect(position.location.coordinates[1]).to.be.equal(latitude);
-    
-        });
-    
-        it("login: should be a falied attempt", async function () {
-        try {
-            await authFacade.login('kw', 'tset')
-        } catch (err) {
-            expect(err.msg).to.be.equal('failed to authenticate from given username and/or password')
-        }
-        });
-    })
+async function succes1() {
+    const longitude = 12.5880
+    const latitude = 55.6843
+    const maxInMeters = 400
+    const friendsInArea = await authFacade.login('ml', 'test', latitude, longitude, maxInMeters);
+    expect(friendsInArea.length).to.be.equal(2);
+    expect(friendsInArea[0].username).to.be.equal('hw');
+    expect(friendsInArea[1].username).to.be.equal('kw');
 }
 
-module.exports = testModule;
+async function succes2() {
+    const longitude = 12.5880
+    const latitude = 55.6843
+    const maxInMeters = 400
+    const friendsInArea = await authFacade.login('kw', 'test', latitude, longitude, maxInMeters);
+    expect(friendsInArea.length).to.be.equal(1);
+    expect(friendsInArea[0].username).to.be.equal('hw');
+}
+
+async function fail1() {
+    try {
+        await authFacade.login('kw', 'tset')
+    } catch (err) {
+        expect(err.msg).to.be.equal('failed to authenticate from given username and/or password')
+    }
+}
+
+module.exports = {
+    succes1,
+    succes2,
+    fail1,
+}

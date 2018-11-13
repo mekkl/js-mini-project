@@ -6,10 +6,8 @@
     "start": "node ./bin/www",
     "dev-mac": "DEBUG=miniproject:* nodemon ./bin/www",
     "dev-win": "SET DEBUG=test:* && nodemon ./bin/www",
-    "test-dev-mac": "DEBUG=miniproject:* mocha --recursive --exit",
-    "test-dev-win": "SET DEBUG=test:* && mocha --recursive --exit",
-    "test-mac": "mocha --recursive --exit",
-    "test-win": "mocha --recursive --exit"
+    "test-dev-mac": "DEBUG=miniproject:* mocha",
+    "test-dev-win": "SET DEBUG=test:* && mocha"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",

@@ -6,8 +6,8 @@
     "start": "node ./bin/www",
     "dev-mac": "DEBUG=miniproject:* nodemon ./bin/www",
     "dev-win": "set DEBUG=miniproject:* & nodemon ./bin/www",
-    "test-dev-mac": "DEBUG=miniproject:* mocha",
-    "test-dev-win": "set DEBUG=miniproject:* & mocha"
+    "testm": "DEBUG=miniproject:* mocha",
+    "testw": "set DEBUG=miniproject:* & mocha"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",

@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev-mac": "DEBUG=miniproject:* nodemon ./bin/www",
-    "dev-win": "SET DEBUG=test:* && nodemon ./bin/www",
+    "dev-win": "set DEBUG=miniproject:* & nodemon ./bin/www",
     "test-dev-mac": "DEBUG=miniproject:* mocha",
-    "test-dev-win": "SET DEBUG=test:* && mocha"
+    "test-dev-win": "set DEBUG=miniproject:* & mocha"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",

@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var app = express();
 
 /**
  * Opret forbindelse til DB
@@ -9,13 +10,10 @@ var logger = require('morgan');
 require('./dbSetup')();
 
 /**
- * Importer routes
- * TODO: Ligesom en api route manager, opret en view route managager
+ * route managers (views/api-resorces)
  */
-var indexRouter = require('./routes/index')
+var viewRouteManager= require('./routes/view/viewRouteManager')
 var apiRouteManager = require('./routes/api/apiRouteManager')
-
-var app = express();
 
 /**
  *  view engine setup
@@ -23,14 +21,17 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+/**
+ *  other middleware
+ */
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**
- * Routes
+ * route middleware
  */
-app.use('/', indexRouter);
+app.use('/', viewRouteManager);
 app.use('/api', apiRouteManager);
 
 /**

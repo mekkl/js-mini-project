@@ -8,11 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Changed the test structure to be run from a single file, instead of calling `mocha --recursive`. 
 
+## [Unreleased] - 2017-11-22
 ### Added
-
+- new view `views/map.ejs`
+- connection failure exception when connection to a mongoDB fails
 
 ### Changed
-
+- enkelt route håndtering for view route, i `app.js`, håndteres nu af `routes/view/viewRouteManager.js`.
 
 ### Removed
 

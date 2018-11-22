@@ -4,9 +4,10 @@ const router = express.Router();
 /**
  *  GET home page. 
  */
-router.get('/', function(req, res, next) {
-
-  res.render('map', { title: 'Mini Project' });
-});
+router.route('/')
+    // post login params (accessed at POST http://localhost:PORT/api/auth/login)
+    .get(async function (req, res, next) {
+      res.render('map', { title: 'Google maps demo' });
+    });
 
 module.exports = router;

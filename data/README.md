@@ -21,12 +21,6 @@ For Mac/Linux:
 $ cp settings.example.js settings.js
 ```
 
-### Geolocation for browser user
-For at at bruger, som benytter browseren (chrome f.eks.) så skal forbindelsen ske via. en HTTPS forbindelse. Chrome har nemlig [fjernet Geolocation API](https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only) fra usikre Origins i Chrome 50.
-
-1. Én løsning er at Node projectet skal deployes på en server der er sat op til, at benytte HTTPS.
-2. Hvis Node projectet skal vises i en "proof-of-concept" anledning, så kan [ngrok](https://ngrok.com/) benyttes til, at oprette en tunnel til dit Node project via. HTTPS.
-
 ## Usage
 Der kan benyttes følgende scripts (se `package.json` for mere info). `start`, `dev-mac`, `dev-win`, `test-mac`, `test-win`, `test-dev-mac`, `test-dev-win`
 

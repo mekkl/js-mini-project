@@ -1,7 +1,11 @@
-Todo: 
+Todo2: 
     [] go igennem alle status koder for api resourcer.
     [x] opstil ny test strukture (test manager) så '--recusive' kan fjernes. Mere kontrol. (CHANGELOG.md - 12/11/2018)
     [] lav test til api resourcer.
     [x] benyt makeTestData.js i mocha testene, så der bliver genereret ens data for alle test. (CHANGELOG.md - 12/11/2018)
     [] implementer miljø-variabler
     [] implementer jwt
+
+Todo3:
+    [] bedre exception håndtering på facade functionerne.
+    [] bedre error handling i views.

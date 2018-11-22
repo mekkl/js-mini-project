@@ -13,7 +13,7 @@ mongoose.connection.once('connected', function () {
 
 });
 mongoose.connection.once('error', function (err) {
-
+    throw err
 });
 
 module.exports = connect;

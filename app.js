@@ -5,6 +5,17 @@ var logger = require('morgan');
 var app = express();
 
 /**
+ * Definer base url
+ * 
+ * da jeg vil kunne deploye flere node backends på min server
+ * bliver de nødt til, at anvende unikke baseurls.
+ * for at denne backend skal fungere, så skal den vide
+ * hvilken base url den benytter. Ellers vil der blive sendt 
+ * et 404 response
+ */
+const baseUrl = '/node'
+
+/**
  * Opret forbindelse til DB
  */
 require('./dbSetup')();

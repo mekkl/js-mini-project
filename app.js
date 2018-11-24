@@ -42,8 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
  * route middleware
  */
-app.use('/', viewRouteManager);
-app.use('/api', apiRouteManager);
+app.use(`${baseUrl}/`, viewRouteManager);
+app.use(`${baseUrl}/api`, apiRouteManager);
 
 /**
  *  catch 404 and forward to error handler

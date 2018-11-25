@@ -1,6 +1,7 @@
 # customs
 settings.js
 .DS_Store
+*.key
 
 # Logs
 logs

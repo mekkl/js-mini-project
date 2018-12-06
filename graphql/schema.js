@@ -1,48 +1,25 @@
-import { resolvers } from './resolvers';
 import { makeExecutableSchema } from 'graphql-tools';
+import { merge } from 'lodash';
 
-const typeDefs = `
-    scalar Date
+// import schemas
+import { 
+    typeDef as User,
+    resolvers as userResolvers
+} from './User/user';
 
-    type User {
-        id: ID
-        firstName: String
-        lastName: String
-        userName: String
-        password: String
-        email: String
-        job: [Job]
-        created: Date
-        lastUpdated: Date
-    }
-
-    type Job {
-        id: ID
-        type: String
-        company: String
-        companyUrl: String
-    }
-
+// If you had Query fields not associated with a
+// specific type you could put them here
+const Query = `
     type Query {
-        getUsers: [User]
-        getUserById(id: ID!): User
-        getUserByUserName(userName: String!): User
-    }
-
-    input addUserInput {
-        firstName: String!
-        lastName: String!
-        userName: String!
-        password: String!
-        email: String!
-    }
-
-    type Mutation {
-        addUser(input: addUserInput): User
+        _empty: String
     }
 `;
+const resolvers = {}
 
-const schema = makeExecutableSchema({ typeDefs, resolvers });
+const schema = makeExecutableSchema({ 
+    typeDefs: [Query, User], 
+    resolvers: merge(resolvers, userResolvers),
+});
 
 export { schema };
 

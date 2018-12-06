@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const dbSetup = require("../dbSetup");
-const settings = require("../settings")
+require('dotenv').config()
 const debug = require('debug')('test:testAuthFacade');
-
 const genData = require('../utils/setupTestData')
 
 const authFacadeTests = require('./facades/testAuthWrapFacade')
@@ -20,8 +19,8 @@ describe("Facade tests:", function () {
    * Connect to the TEST-DATABASE 
    */
   before(async function () {
-    this.timeout(settings.MOCHA_TEST_TIMEOUT);
-    await dbSetup(settings.TEST_DB_URI);
+    this.timeout(process.env.MOCHA_TEST_TIMEOUT);
+    await dbSetup(process.env.TEST_DB_URI);
   })
 
   after(function () {

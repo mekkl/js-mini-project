@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
-const dbURI = require("./settings").DEV_DB_URI;
 var debug = require('debug')('miniproject:dbsetup');
-
+require('dotenv').config()
 
 function connect(dbUriString) {
-    debug(`connecting to ${dbURI}`);
-    const conStr = dbUriString ? dbUriString : dbURI;
+    debug(`connecting to ${process.env.DEV_DB_URI}`);
+    const conStr = dbUriString ? dbUriString : process.env.DEV_DB_URI;
     // This returns a promise
     return mongoose.connect(conStr, { useNewUrlParser: true, useCreateIndex: true });
 }

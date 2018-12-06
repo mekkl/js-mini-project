@@ -9,16 +9,16 @@ eller,
 $ npm install
 ```
 
-For at oprette forbindelse til en db, så skal der oprettes en `settings.js` fil med samme indhold som `settings.example.js` med undtagelser af url'en til db'en som skal udfyldes. __Kør derfor nedestående kommandoer fra roden af projektet__, og rediger `settings.js` ved  at indsætte url til db.
+For at oprette forbindelse til en db, så skal der oprettes en `.env` fil med samme indhold som `EXAMPLE.env` med undtagelser af url'en til db'en, som skal udfyldes manuelt. __Kør derfor nedestående kommandoer fra roden af projektet__, og tilføj din url til din mongodb i `.env`.
 
 For Windows:
 ```
-$ copy settings.example.js settings.js
+$ copy EXAMPLE.env .env
 ```
 
 For Mac/Linux:
 ```
-$ cp settings.example.js settings.js
+$ cp EXMAPLE.env .env
 ```
 
 ### Geolocation for browser user

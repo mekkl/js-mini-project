@@ -60,3 +60,18 @@ Problemet skyldtes måske følgende: *"This error code (3228369023 red.) is usua
 Problemet opstod kun på min egen Windows maskine. Det var nemlig testet på en anden også.
 
 Ved download af den nye LTS node version, blev problemet løst.
+
+### #0005 | no route to static files - 25/11/18
+~~Da projektet skal deployes på en ubuntu server i en droplet, og nginx på dropletten sender alt videre til tomcat på `/`, så bliver nginx nødt til, at sende requests videre til en sub path. Den valgte sub path kan f.eks. være `/node`.~~
+
+~~Problemet opstår nu i, at `app.use(express.static(path.join(__dirname, 'public')));` i `app.js` fortæller node, at de statiske filer i mappen `public` kan hentes ved `/some/static/file`. Men da nginx sender alt videre til tomcat som ikke matcher `/node`, så vil node aldrig kunne få requests efter dens static filer.~~
+
+#### Fix - 27/11/2018
+Løsningen var, at lave følgende ændring i `app.js`
+
+```javascript
++ app.use('/node', express.static(path.join(__dirname, 'public')));
+- app.use(express.static(path.join(__dirname, 'public')));
+```
+
+Følgende ændring gør, at de statiske filer nu kan hentes ved `/node/some/static/file` og læg mærke til, at den første subpath er `/node` som nginx nu vil sende videre til projektet og derved serverer de statiske filer.

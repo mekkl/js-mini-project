@@ -9,7 +9,6 @@ router.use('/auth', authResource)
 router.use('/users', usersResource)
 router.use('/blogs', blogsResource)
 
-
 module.exports = router;
 
 

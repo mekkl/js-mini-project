@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var app = express();
+const GraphqlHTTP = require('express-graphql');
+const { schema } = require('./graphql/schema');
 
 /**
  * Definer base url
@@ -44,6 +46,14 @@ app.use(`${baseUrl}`, express.static(path.join(__dirname, 'public')));
  */
 app.use(`${baseUrl}/`, viewRouteManager);
 app.use(`${baseUrl}/api`, apiRouteManager);
+
+/**
+ * graphql middleware
+ */
+app.use(`${baseUrl}/graphql`, GraphqlHTTP({
+  schema,
+  graphiql: true
+}));
 
 /**
  *  catch 404 and forward to error handler

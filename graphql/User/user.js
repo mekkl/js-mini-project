@@ -9,7 +9,6 @@ export const typeDef = `
         firstName: String
         lastName: String
         userName: String
-        password: String
         email: String
         job: [Job]
         created: Date

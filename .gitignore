@@ -2,6 +2,7 @@
 settings.js
 .DS_Store
 *.key
+.env
 
 # Logs
 logs

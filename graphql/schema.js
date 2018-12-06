@@ -7,6 +7,11 @@ import {
     resolvers as userResolvers
 } from './User/user';
 
+import {
+    typeDef as Position,
+    resolvers as positionResolvers
+} from './Position/position';
+
 // If you had Query fields not associated with a
 // specific type you could put them here
 const Query = `
@@ -17,8 +22,8 @@ const Query = `
 const resolvers = {}
 
 const schema = makeExecutableSchema({ 
-    typeDefs: [Query, User], 
-    resolvers: merge(resolvers, userResolvers),
+    typeDefs: [Query, User, Position], 
+    resolvers: merge(resolvers, userResolvers, positionResolvers),
 });
 
 export { schema };

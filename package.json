@@ -8,6 +8,7 @@
     "dev-win": "set DEBUG=miniproject:* & nodemon ./bin/www",
     "testm": "DEBUG=miniproject:* mocha",
     "testw": "set DEBUG=miniproject:* & mocha",
+    "test": "mocha",
     "start-bab": "nodemon ./bin/www --exec babel-node -e js"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^6.2.0",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "express-graphql": "^0.7.1",
@@ -27,9 +29,9 @@
     "nodemon": "^1.18.4"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.2.0"
   }
 }

@@ -19,6 +19,7 @@ function findByUsername(username) {
 }
 
 function findById(id) {
+  console.log(id)
   return User.findById({ _id: id }).exec();
 }
 

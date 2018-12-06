@@ -9,3 +9,6 @@ Todo2:
 Todo3:
     [] bedre exception håndtering på facade functionerne.
     [] bedre error handling i views.
+
+Todo4:
+    [] implementer konsekvent brug af ES6

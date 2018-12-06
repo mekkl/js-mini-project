@@ -9,16 +9,16 @@ eller,
 $ npm install
 ```
 
-For at oprette forbindelse til en db, så skal der oprettes en `settings.js` fil med samme indhold som `settings.example.js` med undtagelser af url'en til db'en som skal udfyldes. __Kør derfor nedestående kommandoer fra roden af projektet__, og rediger `settings.js` ved  at indsætte url til db.
+For at oprette forbindelse til en db, så skal der oprettes en `.env` fil med samme indhold som `EXAMPLE.env` med undtagelser af url'en til db'en, som skal udfyldes manuelt. __Kør derfor nedestående kommandoer fra roden af projektet__, og tilføj din url til din mongodb i `.env`.
 
 For Windows:
 ```
-$ copy settings.example.js settings.js
+$ copy EXAMPLE.env .env
 ```
 
 For Mac/Linux:
 ```
-$ cp settings.example.js settings.js
+$ cp EXMAPLE.env .env
 ```
 
 ### Geolocation for browser user
@@ -28,7 +28,7 @@ For at at bruger, som benytter browseren (chrome f.eks.) så skal forbindelsen s
 2. Hvis Node projectet skal vises i en "proof-of-concept" anledning, så kan [ngrok](https://ngrok.com/) benyttes til, at oprette en tunnel til dit Node project via. HTTPS.
 
 ## Usage
-Der kan benyttes følgende scripts (se `package.json` for mere info). `start`, `dev-mac`, `dev-win`, `test-mac`, `test-win`, `test-dev-mac`, `test-dev-win`
+Der kan benyttes scripts som `package.json` indeholder.
 
 ## Model/idea
 The idea is to have a backend for users, as sketched in this model. 
@@ -51,5 +51,14 @@ A simple friend-finder app, where you can log-in, via a phone, provide a radius 
 ## Part-3: 
 Will introduce features from 1+2, but this time using Graph-QL, in order to demonstrate the advantages of this new technology.
 
+## Part-4
+Design a GraphQL endpoint on top of the facade-methods defined in the mini-project. Implement a React/Apollo-Client using many of the Queries/Mutations implemented by the GraphQL endpoint.
+
 ## Links
-[mLab](https://mlab.com/home) - hoster databasen.
+### DB hosting
+- [mLab](https://mlab.com/home) - hoster databasen.
+
+### Good graphql refs
+- [resolvere](https://www.apollographql.com/docs/graphql-tools/resolvers.html)
+- [modularizing](https://blog.apollographql.com/modularizing-your-graphql-schema-code-d7f71d5ed5f2)
+- [a lot of good references](https://github.com/chentsulin/awesome-graphql)

@@ -18,7 +18,7 @@ async function updateOrCreate(userId, longitude, latitude) {
             { upsert: true, new: true }
         ).exec()
     }else {
-        throw 'no user with id ' + userId
+        return null
     }
     
 }

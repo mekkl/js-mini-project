@@ -36,7 +36,7 @@ export const typeDef = `
         email: String!
     }
 
-    type Mutation {
+    extend type Mutation {
         addUser(input: addUserInput): User
     }
 
@@ -59,6 +59,7 @@ export const resolvers = {
     Mutation: {
         addUser: (root, {input}) => {
             return userFacade.addUser(input.firstName, input.lastName, input.userName, input.password, input.email)
-        }
+        },
+        
     }
 };

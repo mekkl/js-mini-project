@@ -1,17 +1,26 @@
 const mongoose = require("mongoose");
 const Position = require('../models/Position');
+import userFacade from './userFacade';
 const debug = require('debug')('miniproject:positionFacade');
+
+
 
 function getAll() {
     return Position.find({}).exec();
 }
 
-function updateOrCreate(userId, longitude, latitude) {
-    return Position.findOneAndUpdate(
-        { user: userId },
-        { $set: { user: userId, created: Date.now(), location: { type: 'Point', coordinates: [longitude, latitude] } } },
-        { upsert: true, new: true }
-    ).exec()
+async function updateOrCreate(userId, longitude, latitude) {
+    const user = await userFacade.findById(userId)
+    if(user._id !== undefined) {
+        return Position.findOneAndUpdate(
+            { user: userId },
+            { $set: { user: userId, created: Date.now(), location: { type: 'Point', coordinates: [longitude, latitude] } } },
+            { upsert: true, new: true }
+        ).exec()
+    }else {
+        throw 'no user with id ' + userId
+    }
+    
 }
 
 async function getByUser(userId) {

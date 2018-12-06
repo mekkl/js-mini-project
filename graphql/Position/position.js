@@ -1,4 +1,4 @@
-import postitionFacade from '../../facades/positionFacade';
+import positionFacade from '../../facades/positionFacade';
 import userFacade from '../../facades/userFacade';
 
 
@@ -20,25 +20,38 @@ export const typeDef = `
         POSITION
     }
 
+    input updateOrCreateInput {
+        userId: ID!
+        longitude: Float!
+        latitude: Float!
+    }
+
     extend type Query {
         getPositions: [Position]
     }
 
+    extend type Mutation {
+        updateOrCreate(input: updateOrCreateInput): Position
+    }
     
+
 `;
 
 // resolver map
 export const resolvers = { 
     Query: {
         getPositions: () => {
-            console.log('getpos')
-            return postitionFacade.getAll()
+            return positionFacade.getAll()
         }
     },
     Position: {
         user: (position) => {
-            console.log(position)
             return userFacade.findById(position.user);
         },
     },
+    Mutation: {
+        updateOrCreate: (root, {input}) => {
+            return positionFacade.updateOrCreate(input.userId, input.longitude, input.latitude)
+        }
+    }
 };

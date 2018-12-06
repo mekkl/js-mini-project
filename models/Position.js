@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const SECONDS = 1;
-const EXPIRES = 60 * SECONDS;
+const EXPIRES =  60 * 60 * 1; // one hour
 
 const PositionSchema = new Schema({
     //Make sure that next line reflects your User-model

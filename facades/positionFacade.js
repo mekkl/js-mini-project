@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const Position = require('../models/Position');
-import userFacade from './userFacade';
+const userFacade = require('./userFacade');
 const debug = require('debug')('miniproject:positionFacade');
-
-
 
 function getAll() {
     return Position.find({}).exec();

@@ -1,6 +1,5 @@
 import userFacade from '../../facades/userFacade';
 
-
 export const typeDef = `
     scalar Date
 

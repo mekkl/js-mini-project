@@ -31,6 +31,31 @@ async function login(username, password, latitude, longitude, radius) {
     }
 }
 
+async function loginGQL(username, password, latitude, longitude, radius) {
+    try {
+        const user = await userFacade.findByUsername(username)
+        const verified = (user && await bcrypt.compare(password, user.password))
+        if (verified) {
+            let pos = await positionFacade.findNearby(longitude, latitude, radius).catch(err => {
+                throw err
+            });
+
+            // updating user's position
+            await positionFacade.updateOrCreate(user._id, longitude, latitude)
+
+            pos = pos.filter(ele => {
+                // filter out the user who logs in
+                return String(ele.user) !== String(user._id)
+            }) 
+            return pos
+        }
+        else throw 'failed to authenticate from given username and/or password'
+    } catch (err) {
+        throw { msg: err }
+    }
+}
+
 module.exports = {
-    login
+    login,
+    loginGQL
 }

@@ -51,5 +51,8 @@ A simple friend-finder app, where you can log-in, via a phone, provide a radius 
 ## Part-3: 
 Will introduce features from 1+2, but this time using Graph-QL, in order to demonstrate the advantages of this new technology.
 
+## Part-4
+Design a GraphQL endpoint on top of the facade-methods defined in the mini-project. Implement a React/Apollo-Client using many of the Queries/Mutations implemented by the GraphQL endpoint.
+
 ## Links
 [mLab](https://mlab.com/home) - hoster databasen.

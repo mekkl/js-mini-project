@@ -28,7 +28,7 @@ For at at bruger, som benytter browseren (chrome f.eks.) så skal forbindelsen s
 2. Hvis Node projectet skal vises i en "proof-of-concept" anledning, så kan [ngrok](https://ngrok.com/) benyttes til, at oprette en tunnel til dit Node project via. HTTPS.
 
 ## Usage
-Der kan benyttes følgende scripts (se `package.json` for mere info). `start`, `dev-mac`, `dev-win`, `test-mac`, `test-win`, `test-dev-mac`, `test-dev-win`
+Der kan benyttes scripts som `package.json` indeholder.
 
 ## Model/idea
 The idea is to have a backend for users, as sketched in this model. 

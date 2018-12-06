@@ -55,4 +55,10 @@ Will introduce features from 1+2, but this time using Graph-QL, in order to demo
 Design a GraphQL endpoint on top of the facade-methods defined in the mini-project. Implement a React/Apollo-Client using many of the Queries/Mutations implemented by the GraphQL endpoint.
 
 ## Links
-[mLab](https://mlab.com/home) - hoster databasen.
+### DB hosting
+- [mLab](https://mlab.com/home) - hoster databasen.
+
+### Good graphql refs
+- [resolvere](https://www.apollographql.com/docs/graphql-tools/resolvers.html)
+- [modularizing](https://blog.apollographql.com/modularizing-your-graphql-schema-code-d7f71d5ed5f2)
+- [a lot of good references](https://github.com/chentsulin/awesome-graphql)

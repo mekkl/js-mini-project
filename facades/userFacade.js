@@ -15,7 +15,6 @@ async function addUser(firstName, lastName, userName, password, email) {
 }
 
 function findByUsername(username) {
-  // debug(username)
   return User.findOne({ userName: username }).exec()
 }
 

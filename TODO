@@ -9,4 +9,4 @@ Todo:
     ☐ bedre error handling i views.
     ☐ implementer konsekvent brug af ES6 @high 
     ☐ updater view styling 
-    ☐ lad base url være en env variable. hvis ikke sat er base url '/' @high 
+    ✔ lad base url være en env variable. hvis ikke sat er base url '/' @high @done(18-12-09 00:03)

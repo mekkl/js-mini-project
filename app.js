@@ -5,6 +5,7 @@ var logger = require('morgan');
 var app = express();
 const GraphqlHTTP = require('express-graphql');
 const { schema } = require('./graphql/schema');
+require('dotenv').config();
 
 /**
  * Definer base url
@@ -15,7 +16,7 @@ const { schema } = require('./graphql/schema');
  * hvilken base url den benytter. Ellers vil der blive sendt 
  * et 404 response
  */
-const baseUrl = '/node'
+const baseUrl = process.env.BASE_URL
 
 /**
  * Opret forbindelse til DB

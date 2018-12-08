@@ -1,9 +1,7 @@
-import postitionFacade from '../../facades/positionFacade';
+import positionFacade from '../../facades/positionFacade';
 import userFacade from '../../facades/userFacade';
 
-
 export const typeDef = `
-
     type Position {
         id: ID
         user: User
@@ -20,25 +18,56 @@ export const typeDef = `
         POSITION
     }
 
-    extend type Query {
-        getPositions: [Position]
+    input updateOrCreateInput {
+        userId: ID!
+        longitude: Float!
+        latitude: Float!
     }
 
-    
+    input findNearbyInput {
+        longitude: Float!
+        latitude: Float!
+        maxDistance: Int!
+        minDistance: Int
+    }
+
+    extend type Query {
+        getPositions: [Position]
+        getPositionByUserId(id: ID!): Position
+        findNearby(input: findNearbyInput): [Position]
+    }
+
+    extend type Mutation {
+        updateOrCreate(input: updateOrCreateInput): Position
+    }
 `;
 
 // resolver map
 export const resolvers = { 
     Query: {
         getPositions: () => {
-            console.log('getpos')
-            return postitionFacade.getAll()
-        }
+            return positionFacade.getAll()
+        },
+        getPositionByUserId: (root, {id}) => {
+            return positionFacade.getByUser(id)
+        },
+        findNearby: (root, {input}) => {
+            return positionFacade.findNearby(
+                input.longitude,
+                input.latitude,
+                input.maxDistance,
+                input.minDistance,
+            )
+        },
     },
     Position: {
         user: (position) => {
-            console.log(position)
             return userFacade.findById(position.user);
         },
     },
+    Mutation: {
+        updateOrCreate: (root, {input}) => {
+            return positionFacade.updateOrCreate(input.userId, input.longitude, input.latitude)
+        }
+    }
 };

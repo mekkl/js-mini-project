@@ -37,11 +37,11 @@ async function createData() {
 
     debug('creating users')
     users = []
-    users.push(await userBuilder("Kurt", "Wonnegut", "kw", "test", "a@b.dk", "A type", "comp", "comp.url"))
-    users.push(await userBuilder("Hanne", "Wonnegut", "hw", "test", "a@b.dk", "A type", "comp", "comp.url"))
-    users.push(await userBuilder("Janne", "Wonnegut", "jw", "test", "a@b.dk", "A type", "comp", "comp.url"))
-    users.push(await userBuilder("Iris", "Wonnegut", "iw", "test", "a@b.dk", "A type", "comp", "comp.url"))
-    users.push(await userBuilder("Mikkel", "Larsen", "ml", "test", "a@b.dk", "A type", "comp", "comp.url"))
+    users.push(await userBuilder("Kurt", "Wonnegut", "kw", "test", "amoc@mail.dk", "A type", "comp a", "comp.a.url"))
+    users.push(await userBuilder("Hanne", "Wonnegut", "hw", "test", "somecom@mail.dk", "B type", "comp b", "comp.b.url"))
+    users.push(await userBuilder("Janne", "Wonnegut", "jw", "test", "wonn@mail.dk", "C type", "comp c", "comp.c.url"))
+    users.push(await userBuilder("Iris", "Wonnegut", "iw", "test", "Iris@mail.dk", "D type", "comp d", "comp.d.url"))
+    users.push(await userBuilder("Mikkel", "Larsen", "ml", "test", "mello@mail.dk", "E type", "comp e", "comp.e.url"))
 
     debug('creating positions')
     const positions = await Position.insertMany([

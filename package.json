@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev-mac": "DEBUG=miniproject:* nodemon ./bin/www",
-    "dev-win": "set DEBUG=miniproject:* & nodemon ./bin/www",
+    "start": "node ./bin/www --exec babel-node -e js",
+    "devm": "DEBUG=miniproject:* nodemon ./bin/www --exec babel-node -e js",
+    "devw": "set DEBUG=miniproject:* & nodemon ./bin/www --exec babel-node -e js",
     "testm": "DEBUG=miniproject:* mocha",
     "testw": "set DEBUG=miniproject:* & mocha",
     "test": "mocha",

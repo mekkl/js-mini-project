@@ -41,10 +41,10 @@ async function createUsers() {
 
   debug('creating users')
   const userPromises = [
-    userCreate("Kurt", "Wonnegut", "kw", "test", "a@b.dk", "A type", "comp", "comp.url"),
-    userCreate("Hanne", "Wonnegut", "hw", "test", "a@b.dk", "A type", "comp", "comp.url"),
-    userCreate("Janne", "Wonnegut", "jw", "test", "a@b.dk", "A type", "comp", "comp.url"),
-    userCreate("Iris", "Wonnegut", "iw", "test", "a@b.dk", "A type", "comp", "comp.url"),
+    userCreate("Kurt", "Wonnegut", "kw", "test", "k@w.dk", "A type", "compa", "compa.url"),
+    userCreate("Hanne", "Wonnegut", "hw", "test", "h@w.dk", "B type", "compb", "compb.url"),
+    userCreate("Janne", "Wonnegut", "jw", "test", "j@w.dk", "C type", "compc", "compc.url"),
+    userCreate("Iris", "Wonnegut", "iw", "test", "i@w.dk", "D type", "compd", "compd.url"),
   ]
   debug('await users creating')
   const users = await Promise.all(userPromises);

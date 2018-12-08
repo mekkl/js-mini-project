@@ -1,14 +1,12 @@
-Todo2: 
-    [] go igennem alle status koder for api resourcer.
-    [x] opstil ny test strukture (test manager) så '--recusive' kan fjernes. Mere kontrol. (CHANGELOG.md - 12/11/2018)
-    [] lav test til api resourcer.
-    [x] benyt makeTestData.js i mocha testene, så der bliver genereret ens data for alle test. (CHANGELOG.md - 12/11/2018)
-    [] implementer miljø-variabler
-    [] implementer jwt
-
-Todo3:
-    [] bedre exception håndtering på facade functionerne.
-    [] bedre error handling i views.
-
-Todo4:
-    [] implementer konsekvent brug af ES6
+Todo: 
+    ✔ go igennem alle status koder for api REST resourcer.
+    ✔ opstil ny test strukture (test manager) så '--recusive' kan fjernes. Mere kontrol. @done(12/11/2018 16:04)
+    ☐ lav test til api graphql/REST resource/-r. 
+    ✔ benyt makeTestData.js i mocha testene, så der bliver genereret ens data for alle test. @done(12/11/2018 16:05)
+    ✔ implementer miljø-variabler @done(18-12-06 16:05)
+    ☐ implementer jwt 
+    ☐ bedre exception håndtering på facade functionerne.
+    ☐ bedre error handling i views.
+    ☐ implementer konsekvent brug af ES6 @high 
+    ☐ updater view styling 
+    ✔ lad base url være en env variable. hvis ikke sat er base url '/' @high @done(18-12-09 00:03)

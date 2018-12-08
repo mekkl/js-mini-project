@@ -21,6 +21,8 @@ For Mac/Linux:
 $ cp EXMAPLE.env .env
 ```
 
+Hvis projektet skal deployes på en server med andre node servere, og derfor skal have en anden base url end `/`, så HUSK at ændre `BASE_URL` i `.env` til, at matche den som deployment serveren server node projektet på.
+
 ### Geolocation for browser user
 For at at bruger, som benytter browseren (chrome f.eks.) så skal forbindelsen ske via. en HTTPS forbindelse. Chrome har nemlig [fjernet Geolocation API](https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only) fra usikre Origins i Chrome 50.
 

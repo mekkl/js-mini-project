@@ -16,6 +16,10 @@ import {
     typeDef as Auth,
     resolvers as authResolvers
 } from './Auth/auth';
+import {
+    typeDef as LocationBlog,
+    resolvers as blogResolvers
+} from './LocationBlog/blog';
 
 /**
  * If you had Query fields not associated with a
@@ -37,13 +41,15 @@ const schema = makeExecutableSchema({
         Query, 
         User, 
         Position, 
-        Auth
+        Auth,
+        LocationBlog,
     ], 
     resolvers: merge(
         resolvers, 
         userResolvers, 
         positionResolvers, 
-        authResolvers
+        authResolvers,
+        blogResolvers,
         ),
 });
 

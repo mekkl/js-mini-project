@@ -11,3 +11,4 @@ Todo:
     ☐ updater view styling 
     ✔ lad base url være en env variable. hvis ikke sat er base url '/' @high @done(18-12-09 00:03)
     ☐ create tests for all facade functions @started(18-12-11 18:23)
+    ☐ create tests for all gql endpoints @started(18-12-11 18:28)

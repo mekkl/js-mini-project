@@ -8,8 +8,7 @@
     "devw": "set DEBUG=miniproject:* & nodemon ./bin/www --exec babel-node -e js",
     "testm": "DEBUG=miniproject:* mocha",
     "testw": "set DEBUG=miniproject:* & mocha",
-    "test": "mocha",
-    "start-bab": "nodemon ./bin/www --exec babel-node -e js"
+    "test": "mocha"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",

@@ -22,9 +22,14 @@ function findById(id) {
   return User.findById({ _id: id }).exec();
 }
 
+function findAllByIds(ids) {
+  return User.find({'_id': { $in: ids}}).exec();
+}
+
 module.exports = {
   getAllUsers: getAllUsers,
   addUser: addUser,
   findByUsername: findByUsername,
   findById: findById,
+  findAllByIds
 }

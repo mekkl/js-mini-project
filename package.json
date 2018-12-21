@@ -6,9 +6,10 @@
     "start": "node ./bin/www --exec babel-node -e js",
     "devm": "DEBUG=miniproject:* nodemon ./bin/www --exec babel-node -e js",
     "devw": "set DEBUG=miniproject:* & nodemon ./bin/www --exec babel-node -e js",
-    "testm": "DEBUG=miniproject:* mocha",
-    "testw": "set DEBUG=miniproject:* & mocha",
-    "test": "mocha"
+    "watch": "webpack --watch --mode development --config webpack.config.js",
+    "build": "webpack --mode production",
+    "startAll": "npm-run-all -p nodemon watch",
+    "nodemon": "nodemon --exec babel-node -e js ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",
@@ -25,10 +26,18 @@
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.2",
     "morgan": "~1.9.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.1.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.2.0"

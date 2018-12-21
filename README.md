@@ -30,7 +30,7 @@ For at at bruger, som benytter browseren (chrome f.eks.) så skal forbindelsen s
 2. Hvis Node projectet skal vises i en "proof-of-concept" anledning, så kan [ngrok](https://ngrok.com/) benyttes til, at oprette en tunnel til dit Node project via. HTTPS.
 
 ## Usage
-Der kan benyttes scripts som `package.json` indeholder.
+Der kan benyttes scripts som `package.json` indeholder. Vær opmærksom på at nogle af scriptsne kun kan køres på mac hvor andre kun kan på windows. Dette skyldes syntaks forskelle i deres terminal.
 
 ## Model/idea
 The idea is to have a backend for users, as sketched in this model. 
@@ -55,6 +55,8 @@ Will introduce features from 1+2, but this time using Graph-QL, in order to demo
 
 ## Part-4
 Design a GraphQL endpoint on top of the facade-methods defined in the mini-project. Implement a React/Apollo-Client using many of the Queries/Mutations implemented by the GraphQL endpoint.
+
+React/Apollo-Clienten bliver served af node backenden.
 
 ## Links
 ### DB hosting

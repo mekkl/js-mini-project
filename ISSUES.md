@@ -75,3 +75,13 @@ Løsningen var, at lave følgende ændring i `app.js`
 ```
 
 Følgende ændring gør, at de statiske filer nu kan hentes ved `/node/some/static/file` og læg mærke til, at den første subpath er `/node` som nginx nu vil sende videre til projektet og derved serverer de statiske filer.
+
+### #0006 | pm2 running node server gives 502 Bad Gateway
+Problemet skyldes af ved kørsel af `pm2 start ./bin/www` så starter pm2 ikke node med en babel transpiler. Det resulterer i, at node aldrig starter og hvis man forsøger sende request til serveren, så får man 502 Bad Gateway (med nginx som reverse proxy).
+
+#### Fix - 22/12/2018
+pm2 kan startes i en interpreter mode som benytter babel. Følgende linje starter node serveren, i pm2, med en babel transpiler:
+
+```
+pm2 start ./bin/www --interpreter ./node_modules/.bin/babel-node
+```

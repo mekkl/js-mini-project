@@ -4,9 +4,9 @@ const userFacade = require('../../facades/userFacade');
 
 
 /**
- *  GET home page. 
+ *  benyte '/*' da react selv håndterer routing for sin egen path
  */
-router.get('/', function(req, res, next) {
+router.get('/*', function(req, res, next) {
   userFacade.getAllUsers().then((err, json) => {
     
   }).catch(err => {

@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
+import createHistory from "history/createBrowserHistory"
+
+const history = createHistory();
 
 ReactDOM.render(
-  <h1>Hello, world!4</h1>,
+  <App history={history} />,
   document.getElementById('root')
 );

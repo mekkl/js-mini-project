@@ -14,10 +14,10 @@ export default class App extends Component {
             <Router basename='/node/react'>
                 <div className="app">
                     <div className='sideMenu'>
-                    <ul>
-                        <li><Link to='/'>start page</Link></li>
-                        <li><Link to='/info'>info page</Link></li>
-                    </ul>                  
+                        <ul>
+                            <li><Link to='/'>start page</Link></li>
+                            <li><Link to='/info'>info page</Link></li>
+                        </ul>
                     </div>
                     <Switch>
                         <Route exact path="/" component={StartPage} />

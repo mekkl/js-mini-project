@@ -28,37 +28,6 @@ export default class App extends Component {
                                     <Link to='/register'><button style={styles.sideMenuButton} type='submit'>register</button></Link>
                                 </li>
                             </ul>
-                            <div style={styles.sideMenuTitleContainer}><h4 style={styles.sideMenuTitle}>Fullstack JavaScript</h4></div>
-                            <ul style={styles.sideMenuList}>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                            </ul>
-                            <div style={styles.sideMenuTitleContainer}><h4 style={styles.sideMenuTitle}>Fullstack JavaScript</h4></div>
-                            <ul style={styles.sideMenuList}>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                                <li style={styles.sideMenuItem}>
-                                    <Link to='/js'><button style={styles.sideMenuButton} type='submit'>to be finished</button></Link>
-                                </li>
-                            </ul>
-
                         </div>
                         <div className='content' style={styles.content}>
                             <Switch>

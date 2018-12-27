@@ -12,7 +12,7 @@ Todo:
     ✔ lad base url være en env variable. hvis ikke sat er base url '/' @high @done(18-12-09 00:03)
     ☐ create tests for all facade functions @started(18-12-11 18:23)
     ☐ create tests for all gql endpoints @started(18-12-11 18:28)
-    ☐ embedded sub path to css/script src in html files @started(18-12-21 15:42)
+    ✔ embedded sub path to css/script src in html files @started(18-12-21 15:42) @done(18-12-27 13:17) @lasted(5d21h35m24s)
     ☐ lad react få 'basename' givet via. .env @started(18-12-22 13:16)
     ☐ tilføj .css som benyttes modulært i react @started(18-12-23 16:08)
         ☐ bundle .css med webpack til bundle.css til public

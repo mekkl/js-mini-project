@@ -1,10 +1,11 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: './client/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public/js')
+    filename: 'js/bundle.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
@@ -17,7 +18,19 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
       }
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "stylesheets/bundle.css",
+    })
+  ]
 };

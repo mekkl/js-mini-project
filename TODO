@@ -14,5 +14,5 @@ Todo:
     ☐ create tests for all gql endpoints @started(18-12-11 18:28)
     ✔ embedded sub path to css/script src in html files @started(18-12-21 15:42) @done(18-12-27 13:17) @lasted(5d21h35m24s)
     ☐ lad react få 'basename' givet via. .env @started(18-12-22 13:16)
-    ☐ tilføj .css som benyttes modulært i react @started(18-12-23 16:08)
-        ☐ bundle .css med webpack til bundle.css til public
+    ✔ tilføj .css som benyttes modulært i react @started(18-12-23 16:08) @done(18-12-27 14:11) @lasted(3d22h3m16s)
+        ✔ bundle .css med webpack til bundle.css til public @done(18-12-27 14:11)

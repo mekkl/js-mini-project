@@ -7,7 +7,8 @@ const router = express.Router();
 router.route('/')
     // post login params (accessed at POST http://localhost:PORT/api/auth/login)
     .get(async function (req, res, next) {
-      res.render('map', { title: 'Google maps demo' });
+      const baseUrl = (process.env.BASE_URL.length > 1) ? process.env.BASE_URL + '/' : process.env.BASE_URL;
+      res.render('map', { title: 'Google maps demo', baseUrl: baseUrl });
     });
 
 module.exports = router;

@@ -1,9 +1,9 @@
 require('dotenv').config();
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var app = express();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const app = express();
 const GraphqlHTTP = require('express-graphql');
 const { schema } = require('./graphql/schema');
 
@@ -26,8 +26,8 @@ require('./dbSetup')();
 /**
  * route managers (views/api-resorces)
  */
-var viewRouteManager= require('./routes/view/viewRouteManager')
-var apiRouteManager = require('./routes/api/apiRouteManager')
+const viewRouteManager = require('./routes/view/viewRouteManager')
+const apiRouteManager = require('./routes/api/apiRouteManager')
 
 /**
  *  view engine setup

@@ -18,45 +18,18 @@
     <div class="content">
       <div class="register">
         <h3>Register</h3>
-        <p id='placeholder'></p>
-        <input type="text" name="username" id="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="text" name="firstname" placeholder="firstname"><br>
-        <input type="text" name="lastname" placeholder="lastname"><br>
-        <input type="email" name="email" placeholder="email"><br><br>
-        <button type="submit" onclick='register()'>register</button><br>
+        <form action='<%= baseUrl %>' method="POST">
+          <p><%= status %></p>
+          <input type="text" name="userName" id="username" placeholder="username"><br>
+          <input type="password" name="password" placeholder="password"><br>
+          <input type="text" name="firstName" placeholder="firstname"><br>
+          <input type="text" name="lastName" placeholder="lastname"><br>
+          <input type="email" name="email" placeholder="email"><br><br>
+          <button type="submit">register</button><br>
+        </form>
       </div>
     </div>
   </div>
 </body>
-<script>
-  function register() {
-    const username = document.getElementById('username')
-    const password = document.getElementById('password')
-    const firstname = document.getElementById('firstname')
-    const lastname = document.getElementById('lastname')
-    const email = document.getElementById('email')
-    URL = ''
-    fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify({
-        firstName: firstname, 
-        lastName: lastname, 
-        userName: username, 
-        password: password,
-        email: email
-      })
-    })
-    .then(res => {
-      res.json()
-    })
-    .then(json => {
-      console.log(json)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
-</script>
 
 </html>

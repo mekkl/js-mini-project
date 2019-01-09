@@ -39,7 +39,8 @@ app.set('view engine', 'ejs');
  *  other middleware
  */
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.urlencoded()); // to support URL-encoded bodies
+app.use(express.json()); // to support JSON-encoded bodies
 app.use(`${baseUrl}`, express.static(path.join(__dirname, 'public')));
 
 /**

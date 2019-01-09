@@ -13,7 +13,6 @@ router.route('/')
     // POST: add new user (accessed at POST http://localhost:PORT/api/users)
     .post(async function (req, res) {
         try {
-            debug(req.body)
             const firstName = req.body.firstName
             const lastName = req.body.lastName
             const userName = req.body.userName

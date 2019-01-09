@@ -36,7 +36,7 @@ async function createData() {
     await LocationBlog.deleteMany({});
 
     debug('creating users')
-    users = []
+    const users = []
     users.push(await userBuilder("Kurt", "Wonnegut", "kw", "test", "amoc@mail.dk", "A type", "comp a", "comp.a.url"))
     users.push(await userBuilder("Hanne", "Wonnegut", "hw", "test", "somecom@mail.dk", "B type", "comp b", "comp.b.url"))
     users.push(await userBuilder("Janne", "Wonnegut", "jw", "test", "wonn@mail.dk", "C type", "comp c", "comp.c.url"))

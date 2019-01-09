@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='<%= baseUrl %>stylesheets/style.css' />
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='<%= baseUrl %>stylesheets/style.css' />
 </head>
 
 <body>
@@ -14,19 +16,20 @@
       <h3><a href="<%= baseUrl %>react">REACT CLIENT</a></h3>
     </div>
     <div class="content">
-        <div class="register">
-            <h3>Register</h3>
-            <input type="text" name="username" placeholder="username"><br>
-            <input type="password" name="password" placeholder="password"><br>
-            <input type="text" name="firstname" placeholder="firstname"><br>
-            <input type="text" name="lastname" placeholder="lastname"><br>
-            <input type="email" name="email" placeholder="email"><br><br>
-            
-            <button type="submit">register</button><br>
-        </div>
+      <div class="register">
+        <h3>Register</h3>
+        <form action='<%= baseUrl %>' method="POST">
+          <p><%= status %></p>
+          <input type="text" name="userName" id="username" placeholder="username"><br>
+          <input type="password" name="password" placeholder="password"><br>
+          <input type="text" name="firstName" placeholder="firstname"><br>
+          <input type="text" name="lastName" placeholder="lastname"><br>
+          <input type="email" name="email" placeholder="email"><br><br>
+          <button type="submit">register</button><br>
+        </form>
+      </div>
     </div>
   </div>
 </body>
 
 </html>
-

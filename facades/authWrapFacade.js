@@ -9,7 +9,7 @@ async function login(username, password, latitude, longitude, radius) {
         const user = await userFacade.findByUsername(username)
         const verified = (user && await bcrypt.compare(password, user.password))
         if (verified) {
-            posWithUsers = await positionFacade.findNearbyUsers(longitude, latitude, radius).catch(err => {
+            const posWithUsers = await positionFacade.findNearbyUsers(longitude, latitude, radius).catch(err => {
                 throw err
             });
 

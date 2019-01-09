@@ -7,7 +7,7 @@ import ApolloClient from "apollo-boost";
 import '@babel/polyfill';
 
 const client = new ApolloClient({
-  uri: "http://localhost:3000/node/graphql"
+  uri: "https://mekkl/node/graphql"
 });
 
 const history = createHistory();
